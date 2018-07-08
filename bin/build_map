@@ -8,11 +8,11 @@ SPLITTERJAR="$(pwd)/bin/tools/${SPLITTER}/splitter.jar"
 GMAPIBUILDER="$(pwd)/bin/tools/gmapi-builder/gmapi-builder.py"
 BOUNDS="$(pwd)/var/bounds"
 SEA="$(pwd)/var/sea"
-OPTIONS="$(pwd)/opentopomap_options"
+OPTIONS="$(pwd)/style/opentopomap_options"
 
 # OSM data
 #TODO: only new files
-pushd download > /dev/null
+pushd var/download > /dev/null
 COUNTRY=europe/germany/hessen-latest
 FNAME=$(basename $COUNTRY)
 #wget -O $FNAME.osm.pbf.md5 https://download.geofabrik.de/$COUNTRY.osm.pbf.md5
@@ -53,8 +53,9 @@ OUTDIR=var/output
 #    --precomp-sea=$SEA \
 #    --output-dir=$OUTDIR --bounds=$BOUNDS $DATA $TYPFILE
 
-pushd $OUTDIR >/dev/null
-$GMAPIBUILDER -t osmmap.tdb -b osmmap.img -s $TYPFILE *.img
+pushd var/output >/dev/null
+echo $PWD
+$GMAPIBUILDER -t osmmap.tdb -b gmapsupp.img -s $TYPFILE *.img
 popd > /dev/null
 
 #TODO:  optional: give map a useful name:
