@@ -3,8 +3,9 @@
 MKGMAP="mkgmap-r4193" # adjust to latest version (see www.mkgmap.org.uk)
 SPLITTER="splitter-r591"
 
-MKGMAPJAR="$(pwd)/tools/${MKGMAP}/mkgmap.jar"
-SPLITTERJAR="$(pwd)/tools/${SPLITTER}/splitter.jar"
+MKGMAPJAR="$(pwd)/bin/tools/${MKGMAP}/mkgmap.jar"
+SPLITTERJAR="$(pwd)/bin/tools/${SPLITTER}/splitter.jar"
+GMAPIBUILDER="$(pwd)/bin/tools/gmapi-builder/gmapi-builder.py"
 BOUNDS="$(pwd)/var/bounds"
 SEA="$(pwd)/var/sea"
 OPTIONS="$(pwd)/opentopomap_options"
@@ -48,13 +49,12 @@ popd > /dev/null
 # Create map
 mm="-Xmx1536M"
 OUTDIR=var/output
-java $mm -jar $MKGMAPJAR -c $OPTIONS --style-file=$STYLEFILE \
-    --precomp-sea=$SEA \
-    --output-dir=$OUTDIR --bounds=$BOUNDS $DATA $TYPFILE
-
+#java $mm -jar $MKGMAPJAR -c $OPTIONS --style-file=$STYLEFILE \
+#    --precomp-sea=$SEA \
+#    --output-dir=$OUTDIR --bounds=$BOUNDS $DATA $TYPFILE
 
 pushd $OUTDIR >/dev/null
-../../tools/gmapi-builder/gmapi-builder.py -t osmmap.tdb -b osmmap.img -s ../../style/typ/OpenTopoMap.typ *.img
+$GMAPIBUILDER -t osmmap.tdb -b osmmap.img -s $TYPFILE *.img
 popd > /dev/null
 
 #TODO:  optional: give map a useful name:
