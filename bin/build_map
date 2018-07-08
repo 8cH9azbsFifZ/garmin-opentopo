@@ -53,13 +53,14 @@ OUTDIR=var/output
 #    --precomp-sea=$SEA \
 #    --output-dir=$OUTDIR --bounds=$BOUNDS $DATA $TYPFILE
 
-pushd var/output >/dev/null
+#FIXME: does not work in basecamp :(
+pushd $OUTDIR >/dev/null
 echo $PWD
-$GMAPIBUILDER -t osmmap.tdb -b gmapsupp.img -s $TYPFILE *.img
+$GMAPIBUILDER -t osmmap.tdb -b gmapsupp.img -s $TYPFILE gmapsupp.img
 popd > /dev/null
 
 #TODO:  optional: give map a useful name:
-#mv output/gmapsupp.img maps/$FNAME.img
+mv $OUTDIR/gmapsupp.img maps/$FNAME.img
 
 #adb push output/gmapsupp.img /mnt/sdcard/oruxmaps/mapfiles
 
