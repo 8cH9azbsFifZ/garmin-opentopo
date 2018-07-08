@@ -17,6 +17,14 @@ all: $(MAPS)
 $(DOWNLOAD)/bounds.zip:
 	wget -O $(DOWNLOAD)/bounds.zip http://osm2.pleiades.uni-wuppertal.de/bounds/latest/bounds.zip
 
+$(DOWNLOAD)/sea.zip:
+	wget -O $(DOWNLOAD)/sea.zip http://osm2.pleiades.uni-wuppertal.de/sea/latest/sea.zip
+
+$(SEA)/version.txt: $(DOWNLOAD)/sea.zip
+	unzip $(PWD)/$(DOWNLOAD)/sea.zip -d  $(SEA)
+	# fix, such that extracted files are newer than archive (hack)
+	find $(SEA) -type f -exec touch {} \;
+
 $(BOUNDS)/germany.poly: $(DOWNLOAD)/bounds.zip
 	unzip $(PWD)/$(DOWNLOAD)/bounds.zip -d  $(BOUNDS)
 	# fix, such that extracted files are newer than archive (hack)
@@ -25,7 +33,7 @@ $(BOUNDS)/germany.poly: $(DOWNLOAD)/bounds.zip
 %.typ: %.txt
 	java -jar $(MKGMAPJAR) --family-id=35 --output-dir=$(STYLEFILE) $<
 
-%.img: $(STYLEFILE) $(TYPFILE) $(BOUNDS)/germany.poly
+%.img: $(STYLEFILE) $(TYPFILE) $(BOUNDS)/germany.poly $(SEA)/version.txt
 	mm="-Xmx1536M"
 	echo java $(mm) -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
