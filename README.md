@@ -1,11 +1,11 @@
-Building Garmin Maps from OSM data.
+=Building Garmin Maps from OSM data.
 
-= Status
-WIP -> cf. todo in bin/build_map script ...
+*Status*
+WIP...
 
-= Howto Run
+=Howto Run
 # ./bin/build_map
 
-= Forked from
+=References
 (1) [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap)
 (2) [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking)
