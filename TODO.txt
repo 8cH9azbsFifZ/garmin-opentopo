@@ -1,0 +1,6 @@
+1. Merge contour lines
+2. Include caves from poi list
+3. Create a virtual machine including all files...
+
+
+1. http://katze.tfiu.de/projects/phyghtmap/index.html

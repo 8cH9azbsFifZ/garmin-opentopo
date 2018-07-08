@@ -1,0 +1,47 @@
+###############################################
+#   OpenTopoMap Garmin Edition
+#   (c) 2014-2015 Stefan Erhardt
+#   https://github.com/der-stefan/OpenTopoMap
+#
+#   opentopomap.org
+#
+###############################################
+
+The OpenTopoMap Garmin Edition makes uses of several hacks:
+- Overloading style definitions for different zoom levels
+- Adding opening hours/collection times/websites to mkgmap:region
+
+This is no walk-through: paths have to be adjusted by the user!
+
+1) Download mkgmap & bounds
+2) Download data
+3) Split data
+
+
+4) Compile TYP file
+   The TYP file is hand-made with the text editor of your choice. Ugly, but works great! You only have to compile the TYP file if you made changes to the .txt
+   
+   cd style/typ
+   java -jar mkgmap.jar --family-id=35 OpenTopoMap.txt
+     -> output: OpenTopoMap.typ
+
+
+5) Compile map
+   java -jar mkgmap.jar -c opentopomap_options --style-file=style/opentopomap --output-dir=output --bounds=bounds/bounds data/6324000* style/typ/OpenTopoMap.typ
+
+
+Note: Since mkgmap-r3267 warnings like this occur:
+"routable type 0x06 is used with a non-routable way which was also added as a routable way. This leads to routing errors"
+This is the result of the overloaded style definitions and does not influence routing functionality! Just ignore it...
+
+
+6) Generate contour lines
+	You need:
+	- http://download.geofabrik.de/europe.poly
+	- http://katze.tfiu.de/projects/phyghtmap/
+
+	phyghtmap --polygon=europe.poly -j 2 -s 10 -0 --source=view3 --max-nodes-per-tile=0 --max-nodes-per-way=0 --pbf
+
+	java -jar splitter.jar <phyghtmap-output>.osm.pbf --mapid=3535
+	java -jar mkgmap.jar -c contours_options --style-file=style/contours/ --output-dir=output2 data2/00003535.osm.pbf style/typ/contours.typ
+
