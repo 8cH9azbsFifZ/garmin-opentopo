@@ -2,7 +2,7 @@
 MKGMAP=mkgmap-r4193
 SPLITTER=splitter-r591
 MAPS_DIR=./maps
-MAPS = $(MAPS_DIR)/hessen1-latest.img
+MAPS = germany/hessen-latest 
 STYLEFILE = ./style/opentopomap
 TYPFILE = ./style/typ/OpenTopoMap.typ
 MKGMAPJAR=./bin/tools/$(MKGMAP)/mkgmap.jar
@@ -12,7 +12,7 @@ BOUNDS=./var/bounds
 DATA=./var/data/*.pbf
 DOWNLOAD=./var/download
 
-all: $(MAPS)
+all: $(MAPS_DIR)/hessen1-latest.img
 
 $(DOWNLOAD)/bounds.zip:
 	wget -O $(DOWNLOAD)/bounds.zip http://osm2.pleiades.uni-wuppertal.de/bounds/latest/bounds.zip
