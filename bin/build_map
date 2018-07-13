@@ -36,14 +36,6 @@ java -jar $MKGMAPJAR --family-id=35 OpenTopoMap.txt
 TYPFILE="$(pwd)/OpenTopoMap.typ"
 popd > /dev/null
 
-# Hiking Map
-#TODO: if newer file
-#STYLEFILE="$(pwd)/style/hiking"
-#pushd style/hiking > /dev/null
-#java -jar $MKGMAPJAR --family-id=35 hiking_typdef.txt
-#TYPFILE="$(pwd)/hiking_typdef.typ"
-#popd > /dev/null
-
 # TODO: Include contour in one map file: http://www.mkgmap.org.uk/pipermail/mkgmap-dev/2018q1/028154.html
 
 # Create map
