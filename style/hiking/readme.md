@@ -1,3 +1,5 @@
+Info: only for reference - will not be used during build
+
 
 # mkgmap style for OSM hiking maps
 
