@@ -30,10 +30,12 @@ OUTPUT=./var/output
 
 # Download Boundaries
 $(DOWNLOAD)/bounds.zip:
+	echo "Obtaining new file " $<
 	wget -O $(DOWNLOAD)/bounds.zip http://osm2.pleiades.uni-wuppertal.de/bounds/latest/bounds.zip
 
 # Download Sea
 $(DOWNLOAD)/sea.zip:
+	echo "Obtaining new file " $<
 	wget -O $(DOWNLOAD)/sea.zip http://osm2.pleiades.uni-wuppertal.de/sea/latest/sea.zip
 
 
@@ -50,10 +52,11 @@ $(BOUNDS)/germany.poly: $(DOWNLOAD)/bounds.zip
 	find $(BOUNDS) -type f -exec touch {} \;
 
 $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 
-	echo 1234
+	echo "Obtaining new OSM data file " $<
 
 # Create an IMG Map file
 $(MAPS_DIR)/%.img: $(DOWNLOAD)/%.osm.pbf  $(STYLEFILE) $(TYPFILE) $(BOUNDS)/germany.poly $(SEA)/version.txt
+	echo "Building new map IMG file"
 	mm="-Xmx1536M" # Memory limitation
 	echo java $(mm) -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
