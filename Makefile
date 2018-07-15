@@ -1,5 +1,5 @@
 # WIP - not yet working - but would be nice ;)
-MAPS = germany/hessen-latest 
+MAPS = hessen rheinland-pfalz
 
 MKGMAP=mkgmap-r4193
 SPLITTER=splitter-r591
@@ -50,11 +50,15 @@ $(BOUNDS)/germany.poly: $(DOWNLOAD)/bounds.zip
 	find $(BOUNDS) -type f -exec touch {} \;
 
 # Download latest OSM data
+COUNTRY=europe/germany
+$(DOWNLOAD)/%.osm.pbf.md5: 
+	echo "Obtaining new MD5 OSM data file " $@
+	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+
 $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 
-	echo "Obtaining new OSM data file " $<
-# TBD
-#wget -O $FNAME.osm.pbf.md5 https://download.geofabrik.de/$COUNTRY.osm.pbf.md5
-#md5 $FNAME.osm.pbf | grep $(cut -f 1 -d " " $FNAME.osm.pbf.md5 ) || wget -O https://download.geofabrik.de/$COUNTRY.osm.pbf
+	echo "Obtaining new OSM data file " $@
+	#TODO md5 $FNAME.osm.pbf | grep $(cut -f 1 -d " " $FNAME.osm.pbf.md5 )  -> or download
+	echo wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
 
 # Split files 
