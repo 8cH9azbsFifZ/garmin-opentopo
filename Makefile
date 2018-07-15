@@ -13,7 +13,6 @@ SPLITTERJAR=./bin/tools/${SPLITTER}/splitter.jar
 OPTIONS=./style/opentopomap_options
 SEA=./var/sea
 BOUNDS=./var/bounds
-DATA=./var/data/*.pbf
 DATA_DIR=./var/data
 DOWNLOAD=./var/download
 OUTPUT=./var/output
@@ -63,12 +62,9 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5
 $(DATA_DIR)/%.pbf: $(DOWNLOAD)/hessen-latest.osm.pbf
 	echo "Splitting " $<
 	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(DATA_DIR) $<
-# TBD
-#TODO: if not splitted yet or newer file
 #TODO: sort per map
-#pushd var/data > /dev/null
-#DATA="$(pwd)/6324*.pbf"
 
+DATA=$(DATA_DIR)/*.pbf
 
 
 # Create an IMG Map file
