@@ -6,3 +6,4 @@ var/download/
 maps/
 var/data/
 var/output/
+var/poi
