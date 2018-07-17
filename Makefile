@@ -96,6 +96,7 @@ $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUN
 	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
     --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(dir $<)/*.pbf $(TYPFILE)
+	mv $(OUTPUT)/gmapsupp.img $@
 
 # Push file to android device
 #adb push output/gmapsupp.img /mnt/sdcard/oruxmaps/mapfiles
