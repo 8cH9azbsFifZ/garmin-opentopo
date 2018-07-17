@@ -1,4 +1,6 @@
 # WIP - not yet working - but would be nice ;)
+
+# do not reomve these files
 .PRECIOUS: %.pbf %.img
 
 MAPS = hessen rheinland-pfalz
