@@ -3,6 +3,7 @@ MAPS = hessen rheinland-pfalz
 
 MKGMAP=mkgmap-r4193
 SPLITTER=splitter-r591
+PHYGHTMAP=phyghtmap-2.20
 
 MAPS_DIR=./maps
 STYLEFILE = ./style/opentopomap
@@ -11,6 +12,7 @@ TOOLS_DIR=./bin/tools
 MKGMAPJAR=$(TOOLS_DIR)/$(MKGMAP)/mkgmap.jar
 SPLITTERJAR=$(TOOLS_DIR)/${SPLITTER}/splitter.jar
 OSMCONVERT=$(TOOLS_DIR)/osmconvert/osmconvert
+PHYGHTMAP_DIR=$(TOOLS_DIR)/$(PHYGHTMAP)
 
 OPTIONS=./style/opentopomap_options
 SEA=./var/sea
@@ -20,6 +22,11 @@ DATA_DIR=./var/data
 DOWNLOAD=./var/download
 OUTPUT=./var/output
 POI_DIR=./var/poi
+
+# Download 
+$(PHYGHTMAP_DIR)/setup.py:
+#	echo "Download new " $@
+#	wget -O $(DOWNLOAD) http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.20.orig.tar.gz
 
 # Build OSM convert
 $(OSMCONVERT): $(OSMCONVERT).c
