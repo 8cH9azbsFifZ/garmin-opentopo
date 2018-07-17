@@ -7,3 +7,4 @@ maps/
 var/data/
 var/output/
 var/poi
+bin/tools/osmconvert/osmconvert
