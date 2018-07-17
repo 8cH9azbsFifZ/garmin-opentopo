@@ -26,7 +26,7 @@ $(OSMCONVERT): $(OSMCONVERT).c
 	gcc $< -lz -O3 -o $@
 
 # Convert .GPX to .OSM
-$(POI_DIR)/%.osm: $(POI_DIR)/%.gpx
+$(POI_DIR)/%.osm: $(POI_DIR)/%.gpx $(OSMCONVERT)
 	#FIXME: more than old mines?
 	gpsbabel -i gpx -f $< -o osm,tagnd="man_made:adit" -F $@
 #../bin/osmconvert/osmconvert ../data/test_poi.osm ../data/test_map.osm -o=complete.osm
