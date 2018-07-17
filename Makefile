@@ -1,4 +1,6 @@
 # WIP - not yet working - but would be nice ;)
+.PRECIOUS: %.pbf %.img
+
 MAPS = hessen rheinland-pfalz
 
 MKGMAP=mkgmap-r4193
