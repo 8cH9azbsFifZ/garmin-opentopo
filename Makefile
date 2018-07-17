@@ -60,6 +60,10 @@ $(BOUNDS)/germany.poly: $(DOWNLOAD)/bounds.zip
 	# fix, such that extracted files are newer than archive (hack)
 	find $(BOUNDS) -type f -exec touch {} \;
 
+$(BOUNDS)/europe.poly:
+	echo "Download new " $@
+	wget -O $@ http://download.geofabrik.de/europe.poly
+
 # Download latest OSM data
 COUNTRY=europe/germany
 $(DOWNLOAD)/%.osm.pbf.md5: 
