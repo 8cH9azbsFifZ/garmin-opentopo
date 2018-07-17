@@ -18,7 +18,6 @@ OPTIONS=./style/opentopomap_options
 SEA=./var/sea
 BOUNDS=./var/bounds
 DATA_DIR=./var/data
-#FIXME: data1 dir
 DOWNLOAD=./var/download
 OUTPUT=./var/output
 POI_DIR=./var/poi
@@ -85,15 +84,10 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5
 
 
 # Split files 
-# FIXME: Dir
 $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
 	echo "Splitting " $<
 	test -d $(dir $@) || mkdir $(dir $@)
 	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(dir $@) $<
-#TODO: sort per map
-
-DATA=$(DATA_DIR)/*.pbf
-
 
 # Create an IMG Map file
 $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt
@@ -102,7 +96,6 @@ $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUN
 	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
     --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(dir $<)/*.pbf $(TYPFILE)
-# should be like $(DATA_DIR)/
 
 # Push file to android device
 #adb push output/gmapsupp.img /mnt/sdcard/oruxmaps/mapfiles
