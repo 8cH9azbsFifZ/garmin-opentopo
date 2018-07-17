@@ -61,7 +61,7 @@ $(SEA)/version.txt: $(DOWNLOAD)/sea.zip
 	find $(SEA) -type f -exec touch {} \;
 
 # Unpack boundaries
-$(BOUNDS)/germany.poly: $(DOWNLOAD)/bounds.zip
+$(BOUNDS)/version.txt: $(DOWNLOAD)/bounds.zip
 	echo "Unzip " $<
 	unzip $(PWD)/$(DOWNLOAD)/bounds.zip -d  $(BOUNDS)
 	# fix, such that extracted files are newer than archive (hack)
