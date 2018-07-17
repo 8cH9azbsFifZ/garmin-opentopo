@@ -43,8 +43,8 @@ $(POI_DIR)/%.osm: $(POI_DIR)/%.gpx $(OSMCONVERT)
 
 
 # Create a .TYP file 
-%.typ: %.txt
-	java -jar $(MKGMAPJAR) --family-id=35 --output-dir=$(STYLEFILE) $<
+$(TYPFILE): ./style/typ/OpenTopoMap.txt
+	java -jar $(MKGMAPJAR) --family-id=35 --output-dir=./style/typ $<
 
 # Download Boundaries
 $(DOWNLOAD)/bounds.zip:
