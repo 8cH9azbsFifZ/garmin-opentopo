@@ -86,9 +86,10 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5
 
 # Split files 
 # FIXME: Dir
-$(DATA_DIR)/%.pbf: $(DOWNLOAD)/hessen-latest.osm.pbf
+$(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
 	echo "Splitting " $<
-	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(DATA_DIR) $<
+	echo mkdir $@
+	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(DATA_DIR)/% $<
 #TODO: sort per map
 
 DATA=$(DATA_DIR)/*.pbf
