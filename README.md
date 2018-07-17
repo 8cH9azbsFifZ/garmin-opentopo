@@ -5,7 +5,7 @@ WIP...
 
 =Howto Run
 
-# ./bin/build_map
+# make all
 
 =References
 (1) [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap)
