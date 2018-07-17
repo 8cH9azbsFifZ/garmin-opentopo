@@ -70,16 +70,19 @@ $(BOUNDS)/version.txt: $(DOWNLOAD)/bounds.zip
 	# fix, such that extracted files are newer than archive (hack)
 	find $(BOUNDS) -type f -exec touch {} \;
 
+# Download European Poly
 $(BOUNDS)/europe.poly:
 	echo "Download new " $@
 	wget -O $@ http://download.geofabrik.de/europe.poly
 
+# Force a rebuild
+FORCE:
+
 # Download latest OSM data
 COUNTRY=europe/germany
-$(DOWNLOAD)/%.osm.pbf.md5: 
+$(DOWNLOAD)/%.osm.pbf.md5: FORCE
 	echo "Obtaining new MD5 OSM data file " $@
-#	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
-#FIXME: rm temp files???
+	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
 $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 
 	echo "Obtaining new OSM data file " $@
