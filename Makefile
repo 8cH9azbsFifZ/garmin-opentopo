@@ -97,7 +97,7 @@ DATA=$(DATA_DIR)/*.pbf
 $(MAPS_DIR)/%.img: $(DOWNLOAD)/%.osm.pbf  $(STYLEFILE) $(TYPFILE) $(BOUNDS)/germany.poly $(SEA)/version.txt
 	echo "Building new map IMG file " $<
 	mm="-Xmx1536M" # Memory limitation
-	echo java $(mm) -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
+	java $(mm) -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
     --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(DATA) $(TYPFILE)
 
