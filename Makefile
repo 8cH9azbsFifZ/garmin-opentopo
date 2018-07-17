@@ -92,7 +92,7 @@ $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
 # Create an IMG Map file
 $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt
 	echo "Building new map IMG file " $@
-	mm="-Xmx1536M" # Memory limitation
+	#mm="-Xmx1536M" # Memory limitation
 	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
     --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(dir $<)/*.pbf $(TYPFILE)
