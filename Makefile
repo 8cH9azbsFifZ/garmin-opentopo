@@ -15,7 +15,7 @@ OSMCONVERT=$(TOOLS_DIR)/osmconvert/osmconvert
 OPTIONS=./style/opentopomap_options
 SEA=./var/sea
 BOUNDS=./var/bounds
-DATA_DIR=./var/data1
+DATA_DIR=./var/data
 #FIXME: data1 dir
 DOWNLOAD=./var/download
 OUTPUT=./var/output
