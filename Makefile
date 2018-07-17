@@ -27,7 +27,7 @@ OUTPUT=./var/output
 POI_DIR=./var/poi
 
 # Download 
-$(PHYGHTMAP_DIR)/setup.py:
+#$(PHYGHTMAP_DIR)/setup.py:
 #	echo "Download new " $@
 #	wget -O $(DOWNLOAD) http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.20.orig.tar.gz
 
