@@ -75,13 +75,13 @@ $(BOUNDS)/europe.poly:
 COUNTRY=europe/germany
 $(DOWNLOAD)/%.osm.pbf.md5: 
 	echo "Obtaining new MD5 OSM data file " $@
-	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+#	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+#FIXME: rm temp files???
 
 $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 
 	echo "Obtaining new OSM data file " $@
 	#TODO md5 $FNAME.osm.pbf | grep $(cut -f 1 -d " " $FNAME.osm.pbf.md5 )  -> or download
-	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
-#FIXME: rm temp files???
+#	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
 
 # Split files 
