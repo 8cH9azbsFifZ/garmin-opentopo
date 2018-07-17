@@ -13,7 +13,7 @@ SPLITTERJAR=./bin/tools/${SPLITTER}/splitter.jar
 OPTIONS=./style/opentopomap_options
 SEA=./var/sea
 BOUNDS=./var/bounds
-DATA_DIR=./var/data
+DATA_DIR=./var/data1
 DOWNLOAD=./var/download
 OUTPUT=./var/output
 
