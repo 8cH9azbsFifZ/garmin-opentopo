@@ -86,8 +86,8 @@ $(DOWNLOAD)/%.osm.pbf.md5: FORCE
 
 $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 
 	echo "Obtaining new OSM data file " $@
-	#TODO md5 $FNAME.osm.pbf | grep $(cut -f 1 -d " " $FNAME.osm.pbf.md5 )  -> or download
-#	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+#	md5 $@ | grep $(shell cut -f 1 -d " " $< ) && wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+#TODO: make this ok :)
 
 
 # Split files 
