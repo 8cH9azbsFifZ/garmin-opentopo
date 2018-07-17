@@ -88,15 +88,15 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5
 # FIXME: Dir
 $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
 	echo "Splitting " $<
-	echo mkdir $@
-	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(DATA_DIR)/% $<
+	mkdir $(dir $@)
+	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(DATA_DIR)/$(dir $@) $<
 #TODO: sort per map
 
 DATA=$(DATA_DIR)/*.pbf
 
 
 # Create an IMG Map file
-$(MAPS_DIR)/%.img: $(DOWNLOAD)/%.osm.pbf  $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt
+$(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt
 	echo "Building new map IMG file " $<
 	mm="-Xmx1536M" # Memory limitation
 	java $(mm) -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
