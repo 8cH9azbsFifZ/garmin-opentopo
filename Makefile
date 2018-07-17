@@ -94,7 +94,7 @@ DATA=$(DATA_DIR)/*.pbf
 
 
 # Create an IMG Map file
-$(MAPS_DIR)/%.img: $(DOWNLOAD)/%.osm.pbf  $(STYLEFILE) $(TYPFILE) $(BOUNDS)/germany.poly $(SEA)/version.txt
+$(MAPS_DIR)/%.img: $(DOWNLOAD)/%.osm.pbf  $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt
 	echo "Building new map IMG file " $<
 	mm="-Xmx1536M" # Memory limitation
 	echo java $(mm) -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
