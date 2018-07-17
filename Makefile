@@ -88,8 +88,8 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5
 # FIXME: Dir
 $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
 	echo "Splitting " $<
-	mkdir $(dir $@)
-	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(DATA_DIR)/$(dir $@) $<
+	test -d $(dir $@) || mkdir $(dir $@)
+	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(dir $@) $<
 #TODO: sort per map
 
 DATA=$(DATA_DIR)/*.pbf
@@ -101,7 +101,8 @@ $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUN
 	mm="-Xmx1536M" # Memory limitation
 	java $(mm) -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
-    --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(DATA) $(TYPFILE)
+    --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(dir $<) $(TYPFILE)
+# should be like $(DATA_DIR)/
 
 # Push file to android device
 #adb push output/gmapsupp.img /mnt/sdcard/oruxmaps/mapfiles
