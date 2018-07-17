@@ -7,8 +7,10 @@ SPLITTER=splitter-r591
 MAPS_DIR=./maps
 STYLEFILE = ./style/opentopomap
 TYPFILE = ./style/typ/OpenTopoMap.typ
-MKGMAPJAR=./bin/tools/$(MKGMAP)/mkgmap.jar
-SPLITTERJAR=./bin/tools/${SPLITTER}/splitter.jar
+TOOLS_DIR=./bin/tools
+MKGMAPJAR=$(TOOLS_DIR)/$(MKGMAP)/mkgmap.jar
+SPLITTERJAR=$(TOOLS_DIR)/${SPLITTER}/splitter.jar
+OSMCONVERT=$(TOOLS_DIR)/osmconvert/osmconvert
 
 OPTIONS=./style/opentopomap_options
 SEA=./var/sea
@@ -19,6 +21,9 @@ DOWNLOAD=./var/download
 OUTPUT=./var/output
 POI_DIR=./var/poi
 
+# Build OSM convert
+$(OSMCONVERT): $(OSMCONVERT).c
+	gcc $< -lz -O3 -o $@
 
 # Convert .GPX to .OSM
 $(POI_DIR)/%.osm: $(POI_DIR)/%.gpx
