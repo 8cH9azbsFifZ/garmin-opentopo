@@ -9,3 +9,4 @@ var/output/
 var/poi
 bin/tools/osmconvert/osmconvert
 var/tmp/
+style/typ/osmmap.img
