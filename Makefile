@@ -88,8 +88,8 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
 	echo wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 	#FIXME: patch only if unpatched yet ..
 	#echo mv $@ $@.orig
-	$(OSMCONVERT) $(POIFILE) $@.orig -o=$@
-	echo Done, ok
+	#Run with - in order to ignore the weird error codes returned...
+	-$(OSMCONVERT) $(POIFILE) $@.orig -o=$@
 
 # Split files 
 $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
