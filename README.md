@@ -9,6 +9,8 @@
 ## References
 - [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap)
 - [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking)
+
+## Todo
 - Merge contour lines
 - Include caves from poi list
 - Create a virtual machine including all files...
