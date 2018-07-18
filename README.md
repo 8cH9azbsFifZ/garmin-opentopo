@@ -7,6 +7,7 @@
 ```
 
 ## Todo
+- FIXMEs in Makefile
 - Render contour map once
 - Include caves from poi list
 - Create a virtual machine including all files...
