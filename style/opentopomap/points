@@ -233,7 +233,7 @@ man_made=tower & !(tower:type=bell_tower) [0x6411 resolution 22]
 man_made=water_tower [0x6412 resolution 22]
 man_made=watermill [0x6415 resolution 24]
 man_made=mast [0x6702 resolution 22]
-man_made=adit [0x640c resolution 22]
+man_made=adit [0x640c resolution 20]
 
 power=generator & generator:source=wind [0x6413 resolution 20]
 
@@ -242,7 +242,7 @@ natural=tree & (name=* | denotation=landmark) & type=conifer [0x6417 resolution 
 
 
 # Edge 705 displays 0x650a,0x6511,0x6512,0x6513,0x6603,0x6614 as hollow white circles, no menu
-natural=cave_entrance [0x6619 resolution 22]
+natural=cave_entrance [0x6619 resolution 20]
 natural=cliff [0x6607 resolution 24]
 natural=peak {name '${name|def:}${ele|height:m=>ft|def:}' } [0x6616 resolution 24]
 natural=rock [0x6614 resolution 24]
