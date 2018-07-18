@@ -33,10 +33,10 @@ POI_DIR=./var/poi
 $(OSMCONVERT): $(OSMCONVERT).c
 	gcc $< -lz -O3 -o $@
 
-# Convert .GPX to .OSM
-$(POI_DIR)/%.osm: $(POI_DIR)/%.gpx $(OSMCONVERT)
 	#FIXME: more than old mines?
 	gpsbabel -i gpx -f $< -o osm,tagnd="man_made:adit" -F $@
+
+#TODO: Patch with POI file if exists...
 #../bin/osmconvert/osmconvert ../data/test_poi.osm ../data/test_map.osm -o=complete.osm
 
 
