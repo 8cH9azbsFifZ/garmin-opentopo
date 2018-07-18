@@ -11,7 +11,7 @@
 - [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking)
 
 ## Todo
-- Merge contour lines
+- Render contour map once
 - Include caves from poi list
 - Create a virtual machine including all files...
 - Better icon for mines
