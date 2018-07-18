@@ -23,6 +23,7 @@ DATA_DIR=./var/data
 DOWNLOAD=./var/download
 OUTPUT=./var/output
 POI_DIR=./var/poi
+POIFILE=$(POI_DIR)/poi.osm
 
 # Download 
 #$(PHYGHTMAP_DIR)/setup.py:
@@ -33,12 +34,9 @@ POI_DIR=./var/poi
 $(OSMCONVERT): $(OSMCONVERT).c
 	gcc $< -lz -O3 -o $@
 
+$(POI_DIR)/%.osm: %.gpx
 	#FIXME: more than old mines?
 	gpsbabel -i gpx -f $< -o osm,tagnd="man_made:adit" -F $@
-
-#TODO: Patch with POI file if exists...
-#../bin/osmconvert/osmconvert ../data/test_poi.osm ../data/test_map.osm -o=complete.osm
-
 
 # Create a .TYP file 
 $(TYPFILE): ./style/typ/OpenTopoMap.txt
@@ -83,10 +81,14 @@ $(DOWNLOAD)/%.osm.pbf.md5: FORCE
 	echo "Obtaining new MD5 OSM data file " $@
 	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
-$(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 
+$(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
 	echo "Obtaining new OSM data file " $@
 #	md5 $@ | grep $(shell cut -f 1 -d " " $< ) && wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 #TODO: make this ok :)
+	# mv $@ $@.orig
+	echo $(OSMCONVERT) $(POIFILE) $@.orig -o=$@
+	#../bin/osmconvert/osmconvert ../data/test_poi.osm ../data/test_map.osm -o=complete.osm
+
 
 
 # Split files 
