@@ -20,6 +20,10 @@ or build a specific map using
 - Better icon for mines
 - Include contour in one map file: http://www.mkgmap.org.uk/pipermail/mkgmap-dev/2018q1/028154.html
 
+## Dependencies
+- gnumake
+- gpsbabel
+
 ## References
 - Baseline for this code: [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap) 
 - Input for style definitions: [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking) 
