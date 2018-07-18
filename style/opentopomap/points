@@ -233,6 +233,7 @@ man_made=tower & !(tower:type=bell_tower) [0x6411 resolution 22]
 man_made=water_tower [0x6412 resolution 22]
 man_made=watermill [0x6415 resolution 24]
 man_made=mast [0x6702 resolution 22]
+man_made=adit [0x640c resolution 22]
 
 power=generator & generator:source=wind [0x6413 resolution 20]
 
