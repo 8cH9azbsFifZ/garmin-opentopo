@@ -119,4 +119,5 @@ all: $(MAPS_DIR)/hessen-latest.img
 
 clean:
 	find $(BOUNDS) -type f -exec rm {} \;
+	find $(SEA) -type f -exec rm {} \;
 	
