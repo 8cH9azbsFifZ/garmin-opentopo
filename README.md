@@ -6,6 +6,12 @@
 # make all
 ```
 
+or
+
+```
+make maps/hessen-latest.img
+```
+
 ## Todo
 - FIXMEs in Makefile
 - Render contour map once
