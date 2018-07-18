@@ -84,12 +84,9 @@ $(DOWNLOAD)/%.osm.pbf.md5: FORCE
 $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
 	echo "Obtaining new OSM data file " $@
 #	md5 $@ | grep $(shell cut -f 1 -d " " $< ) && wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
-#TODO: make this ok :)
-	echo mv $@ $@.orig
-	echo $(OSMCONVERT) $(POIFILE) $@.orig -o=$@
-	#../bin/osmconvert/osmconvert ../data/test_poi.osm ../data/test_map.osm -o=complete.osm
-
-
+	#echo mv $@ $@.orig
+#FIXME: make this ok :)
+	$(OSMCONVERT) $(POIFILE) $@.orig -o=$@
 
 # Split files 
 $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
