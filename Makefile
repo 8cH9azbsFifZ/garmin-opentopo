@@ -78,6 +78,7 @@ FORCE:
 
 # Download latest OSM data
 COUNTRY=europe/germany
+#FIXME: country stuff in variable?
 $(DOWNLOAD)/%.osm.pbf.md5: FORCE
 	echo "Obtaining new MD5 OSM data file " $@
 	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)

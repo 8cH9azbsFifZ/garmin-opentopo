@@ -6,10 +6,10 @@
 # make all
 ```
 
-or
+or build a specific map using
 
 ```
-make maps/hessen-latest.img
+# make maps/hessen-latest.img
 ```
 
 ## Todo
