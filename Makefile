@@ -116,3 +116,7 @@ android: $(MAPS_DIR)/hessen-latest.img
 
 all: $(MAPS_DIR)/hessen-latest.img
 
+
+clean:
+	find $(BOUNDS) -type f -exec rm {} \;
+	
