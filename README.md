@@ -17,9 +17,8 @@
 ## References
 - Baseline for this code: [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap) 
 - Input for style definitions: [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking) 
-- OSMCONVERT http://m.m.i24.cc/osmconvert.c
-- MKGMAP=mkgmap-r4193
-- SPLITTER=splitter-r591
-- PHYGHTMAP=phyghtmap-2.20
+- [OSMCONVERT](http://m.m.i24.cc/osmconvert.c)
+- [MKGMAP](http://www.mkgmap.org.uk/download/mkgmap.html) and its [SPLITTER](http://www.mkgmap.org.uk/download/splitter.html)
+- (later:) phyghtmap-2.20
 
 
