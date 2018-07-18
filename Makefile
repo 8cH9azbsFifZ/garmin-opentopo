@@ -34,7 +34,7 @@ POIFILE=$(POI_DIR)/poi.osm
 $(OSMCONVERT): $(OSMCONVERT).c
 	gcc $< -lz -O3 -o $@
 
-$(POI_DIR)/%.osm: %.gpx
+$(POI_DIR)/%.osm: $(POI_DIR)/%.gpx
 	#FIXME: more than old mines?
 	gpsbabel -i gpx -f $< -o osm,tagnd="man_made:adit" -F $@
 
