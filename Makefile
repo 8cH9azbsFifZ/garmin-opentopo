@@ -83,9 +83,11 @@ $(DOWNLOAD)/%.osm.pbf.md5: FORCE
 
 $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
 	echo "Obtaining new OSM data file " $@
-#	md5 $@ | grep $(shell cut -f 1 -d " " $< ) && wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+	#FIXME: download only if needed 
+	# -- md5 $@ | grep $(shell cut -f 1 -d " " $< ) && 
+	echo wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+	#FIXME: patch only if unpatched yet ..
 	#echo mv $@ $@.orig
-#FIXME: make this ok :)
 	$(OSMCONVERT) $(POIFILE) $@.orig -o=$@
 
 # Split files 
