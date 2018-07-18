@@ -1,12 +1,9 @@
-=Building Garmin Maps from OSM data.
+Building Garmin Maps from OSM data.
 
-*Status*
-WIP...
-
-=Howto Run
+*Status*: WIP...
 
 # make all
 
-=References
-(1) [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap)
-(2) [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking)
+References
+- [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap)
+- [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking)
