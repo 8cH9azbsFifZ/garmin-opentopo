@@ -1,4 +1,4 @@
-# do not reomve these files
+# do not remove these files
 .PRECIOUS: %.pbf %.img
 
 MAPS = hessen rheinland-pfalz
