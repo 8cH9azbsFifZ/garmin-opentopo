@@ -1,6 +1,6 @@
-1. Merge contour lines
-2. Include caves from poi list
-3. Create a virtual machine including all files...
-
-# TODO: Include contour in one map file: http://www.mkgmap.org.uk/pipermail/mkgmap-dev/2018q1/028154.html
+- Merge contour lines
+- Include caves from poi list
+- Create a virtual machine including all files...
+- Better icon for mines
+- Include contour in one map file: http://www.mkgmap.org.uk/pipermail/mkgmap-dev/2018q1/028154.html
 
