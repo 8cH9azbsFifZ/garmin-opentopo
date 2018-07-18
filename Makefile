@@ -105,6 +105,7 @@ $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUN
 
 # Push file to android device
 ORUXMAPS_DIR=/mnt/sdcard/oruxmaps/mapfiles
+
 android: $(MAPS_DIR)/hessen-latest.img
 #FIXME: with variables..
 	adb push $< $(ORUXMAPS_DIR)
