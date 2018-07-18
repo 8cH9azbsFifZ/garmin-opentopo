@@ -89,6 +89,7 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
 	#FIXME: patch only if unpatched yet ..
 	#echo mv $@ $@.orig
 	$(OSMCONVERT) $(POIFILE) $@.orig -o=$@
+	echo Done, ok
 
 # Split files 
 $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
