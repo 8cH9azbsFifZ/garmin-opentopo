@@ -1,5 +1,3 @@
-# WIP - not yet working - but would be nice ;)
-
 # do not reomve these files
 .PRECIOUS: %.pbf %.img
 
@@ -86,8 +84,8 @@ $(DOWNLOAD)/%.osm.pbf.md5: FORCE
 
 $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 
 	echo "Obtaining new OSM data file " $@
-	#TODO md5 $FNAME.osm.pbf | grep $(cut -f 1 -d " " $FNAME.osm.pbf.md5 )  -> or download
-#	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+#	md5 $@ | grep $(shell cut -f 1 -d " " $< ) && wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
+#TODO: make this ok :)
 
 
 # Split files 
@@ -106,7 +104,10 @@ $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUN
 	mv $(OUTPUT)/gmapsupp.img $@
 
 # Push file to android device
-#adb push output/gmapsupp.img /mnt/sdcard/oruxmaps/mapfiles
+ORUXMAPS_DIR=/mnt/sdcard/oruxmaps/mapfiles
+android: $(MAPS_DIR)/hessen-latest.img
+#FIXME: with variables..
+	adb push $< $(ORUXMAPS_DIR)
 
 
 all: $(MAPS_DIR)/hessen-latest.img
