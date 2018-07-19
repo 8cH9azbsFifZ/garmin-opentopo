@@ -31,4 +31,10 @@ or build a specific map using
 - [MKGMAP](http://www.mkgmap.org.uk/download/mkgmap.html) and its [SPLITTER](http://www.mkgmap.org.uk/download/splitter.html)
 - (later:) phyghtmap-2.20
 
+## Howto adjust style
+- Which points to show in which zoom level? style/opentopomap/points
+- Icons in XPM style/typ/OpenTopoMap.typ
+
+## Time
+germany Total time taken: 1 hour 48 minutes 3 seconds
 
