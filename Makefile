@@ -25,10 +25,21 @@ OUTPUT=./var/output
 POI_DIR=./var/poi
 POIFILE=$(POI_DIR)/poi.osm
 
+# TODO: PHYGHTMAP
 # Download 
 #$(PHYGHTMAP_DIR)/setup.py:
 #	echo "Download new " $@
 #	wget -O $(DOWNLOAD) http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.20.orig.tar.gz
+
+# Install the application
+#	sudo pip install cycler pyparsing matplotlib http cookiejar bs4 request
+# sudo pip3 install  cycler pyparsing matplotlib  cookiejar bs4 
+# sudo pip3 install lxml
+# sudo pip3 install request
+# 	sudo python setup.py install
+
+# Run the application cf howto
+
 
 # Build OSM convert
 $(OSMCONVERT): $(OSMCONVERT).c
