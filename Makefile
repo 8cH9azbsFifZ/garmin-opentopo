@@ -135,3 +135,4 @@ clean:
 
 
 # wget -r -np -N http://geoweb.hft-stuttgart.de/SRTM/srtm_as_osm/
+#https://wiki.openstreetmap.org/wiki/SRTM
