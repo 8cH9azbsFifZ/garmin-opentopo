@@ -132,3 +132,6 @@ clean:
 	find $(BOUNDS) -type f -exec rm {} \;
 	find $(SEA) -type f -exec rm {} \;
 	
+
+
+# wget -r -np -N http://geoweb.hft-stuttgart.de/SRTM/srtm_as_osm/
