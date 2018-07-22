@@ -125,7 +125,7 @@ $(SRTM_DIR)/%/00003535.osm.pbf: $(SRTM_DIR)/%.osm.pbf
 $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt $(SRTM_DIR)/%/00003535.osm.pbf
 	echo "Building new map IMG file " $@
 	#mm="-Xmx1536M" # Memory limitation
-	echo	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
+	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
     --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(dir $<)/*.pbf $(TYPFILE)
 	mv $(OUTPUT)/gmapsupp.img $@
