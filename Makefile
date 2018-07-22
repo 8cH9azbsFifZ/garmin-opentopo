@@ -103,7 +103,7 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
 	#Run with - in order to ignore the weird error codes returned...
 	-$(OSMCONVERT) $(POIFILE) $@.orig -o=$@
 
-# Split files 
+# Split OSM files 
 $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf 
 	echo "Splitting " $<
 	test -d $(dir $@) || mkdir $(dir $@)
@@ -114,6 +114,11 @@ $(SRTM_DIR)/%.osm.pbf: $(BOUNDS)/%.poly
 	$(PHYGHTMAP) --output-prefix=$(SRTM_DIR)/$(notdir $@) --hgtdir=$(HGT_DIR) --polygon=$< -j 2 -s 10 -0 --source=view3 --max-nodes-per-tile=0 --max-nodes-per-way=0 --pbf
 	mv $(SRTM_DIR)/$(notdir $@)*.osm.pbf $@
 
+# Split the SRTM OSM files
+$(SRTM_DIR)/%/00003535.osm.pbf: $(SRTM_DIR)/%.osm.pbf 
+	echo "Splitting " $<
+	test -d $(dir $@) || mkdir $(dir $@)
+	java -jar $(SPLITTERJAR) --mapid=3535 --output-dir=$(dir $@) $<
 
 
 # Create an IMG Map file
