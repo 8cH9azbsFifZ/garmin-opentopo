@@ -9,7 +9,7 @@
 or build a specific map using
 
 ```
-# make maps/hessen-latest.img
+# make maps/hessen.img
 ```
 ## Features
 - TBD
@@ -17,7 +17,6 @@ or build a specific map using
 ## Todo
 - FIXMEs in Makefile
 - Better icon for mines
-- Colored Input - for differnt pois...
 
 ## Dependencies
 - gnumake
@@ -28,7 +27,7 @@ or build a specific map using
 - Input for style definitions: [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking) 
 - [OSMCONVERT](http://m.m.i24.cc/osmconvert.c)
 - [MKGMAP](http://www.mkgmap.org.uk/download/mkgmap.html) and its [SPLITTER](http://www.mkgmap.org.uk/download/splitter.html)
-- (later:) phyghtmap-2.20
+- [phyghtmap](http://katze.tfiu.de/projects/phyghtmap/)
 
 ## Howto adjust style
 - Which points to show in which zoom level? style/opentopomap/points

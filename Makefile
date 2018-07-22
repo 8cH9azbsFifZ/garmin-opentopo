@@ -49,6 +49,8 @@ POIFILE=$(POI_DIR)/poi.osm
 $(OSMCONVERT): $(OSMCONVERT).c
 	gcc $< -lz -O3 -o $@
 
+# Convert POI file
+# TODO: - Colored Input - for differnt pois...
 $(POI_DIR)/%.osm: $(POI_DIR)/%.gpx
 	#FIXME: more than old mines?
 	gpsbabel -i gpx -f $< -o osm,tagnd="man_made:adit" -F $@
