@@ -115,14 +115,14 @@ $(SRTM_DIR)/%.osm.pbf: $(BOUNDS)/%.poly
 	mv $(SRTM_DIR)/$(notdir $@)*.osm.pbf $@
 
 # Split the SRTM OSM files
-$(SRTM_DIR)/%/00003535.osm.pbf: $(SRTM_DIR)/%.osm.pbf 
+$(DATA_DIR)/%/00003535.osm.pbf: $(SRTM_DIR)/%.osm.pbf 
 	echo "Splitting " $<
 	test -d $(dir $@) || mkdir $(dir $@)
 	java -jar $(SPLITTERJAR) --mapid=3535 --output-dir=$(dir $@) $<
 
 # Create an IMG Map file
 # FIXME: magic numbers
-$(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt $(SRTM_DIR)/%/00003535.osm.pbf
+$(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt 
 	echo "Building new map IMG file " $@
 	#mm="-Xmx1536M" # Memory limitation
 	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
