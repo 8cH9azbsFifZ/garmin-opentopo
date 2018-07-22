@@ -93,7 +93,7 @@ $(DOWNLOAD)/%-latest.osm.pbf.md5: FORCE
 	echo "Obtaining new MD5 OSM data file " $@
 	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
-$(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
+$(DOWNLOAD)/%-latest.osm.pbf: $(DOWNLOAD)/%-latest.osm.pbf.md5 $(POIFILE)
 	echo "Obtaining new OSM data file " $@
 	#FIXME: download only if needed 
 	# -- md5 $@ | grep $(shell cut -f 1 -d " " $< ) && 
@@ -104,7 +104,7 @@ $(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
 	-$(OSMCONVERT) $(POIFILE) $@.orig -o=$@
 
 # Split OSM files 
-$(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf 
+$(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%-latest.osm.pbf 
 	echo "Splitting " $<
 	test -d $(dir $@) || mkdir $(dir $@)
 	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(dir $@) $<
