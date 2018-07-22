@@ -28,6 +28,7 @@ or build a specific map using
 - [OSMCONVERT](http://m.m.i24.cc/osmconvert.c)
 - [MKGMAP](http://www.mkgmap.org.uk/download/mkgmap.html) and its [SPLITTER](http://www.mkgmap.org.uk/download/splitter.html)
 - [phyghtmap](http://katze.tfiu.de/projects/phyghtmap/)
+- Alternative download [Bike Extract SRTM OSM](https://extract.bbbike.org/)
 
 ## Howto adjust style
 - Which points to show in which zoom level? style/opentopomap/points
