@@ -17,7 +17,6 @@ or build a specific map using
 ## Todo
 - FIXMEs in Makefile
 - Better icon for mines
-- Include contour in one map file: http://www.mkgmap.org.uk/pipermail/mkgmap-dev/2018q1/028154.html
 - Colored Input - for differnt pois...
 
 ## Dependencies
