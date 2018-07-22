@@ -1,6 +1,9 @@
 # do not remove these files
 .PRECIOUS: %.pbf %.img %.poly
 
+.SECONDARY:
+
+
 MAPS = hessen rheinland-pfalz
 
 MKGMAP=mkgmap-r4193
