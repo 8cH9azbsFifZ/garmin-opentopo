@@ -15,10 +15,12 @@ MKGMAPJAR=$(TOOLS_DIR)/$(MKGMAP)/mkgmap.jar
 SPLITTERJAR=$(TOOLS_DIR)/${SPLITTER}/splitter.jar
 OSMCONVERT=$(TOOLS_DIR)/osmconvert/osmconvert
 PHYGHTMAP_DIR=$(TOOLS_DIR)/$(PHYGHTMAP)
+PHYGHTMAP=/usr/local/bin/phyghtmap
 
 OPTIONS=./style/opentopomap_options
 SEA=./var/sea
 BOUNDS=./var/bounds
+#FIXME: rename to dir
 DATA_DIR=./var/data
 DOWNLOAD=./var/download
 OUTPUT=./var/output
@@ -37,9 +39,6 @@ POIFILE=$(POI_DIR)/poi.osm
 # sudo pip3 install lxml
 # sudo pip3 install request
 # 	sudo python setup.py install
-
-# Run the application cf howto
-
 
 # Build OSM convert
 $(OSMCONVERT): $(OSMCONVERT).c
@@ -77,17 +76,17 @@ $(BOUNDS)/version.txt: $(DOWNLOAD)/bounds.zip
 	# fix, such that extracted files are newer than archive (hack)
 	find $(BOUNDS) -type f -exec touch {} \;
 
-# Download European Poly
-$(BOUNDS)/europe.poly:
+# Download Boundary Polygons
+COUNTRY=europe/germany
+#FIXME: country stuff in variable?
+$(BOUNDS)/%.poly:
 	echo "Download new " $@
-	wget -O $@ http://download.geofabrik.de/europe.poly
+	wget -O $@ http://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
 # Force a rebuild
 FORCE:
 
 # Download latest OSM data
-COUNTRY=europe/germany
-#FIXME: country stuff in variable?
 $(DOWNLOAD)/%.osm.pbf.md5: FORCE
 	echo "Obtaining new MD5 OSM data file " $@
 	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
@@ -107,6 +106,11 @@ $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
 	echo "Splitting " $<
 	test -d $(dir $@) || mkdir $(dir $@)
 	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(dir $@) $<
+
+# Create SRTM OSM
+$(SRTM_DIR)/%.osm.pbf: $(BOUNDS)/%.poly
+	$(PHYGHTMAP) --polygon=$< -j 2 -s 10 -0 --source=view3 --max-nodes-per-tile=0 --max-nodes-per-way=0 --pbf
+
 
 # Create an IMG Map file
 $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt
