@@ -93,7 +93,7 @@ $(DOWNLOAD)/%.osm.pbf.md5: FORCE
 	echo "Obtaining new MD5 OSM data file " $@
 	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
-$(DOWNLOAD)/$(addsuffix -latest,%).osm.pbf: $(DOWNLOAD)/$(addsuffix -latest,%).osm.pbf.md5 $(POIFILE)
+$(DOWNLOAD)/%.osm.pbf: $(DOWNLOAD)/%.osm.pbf.md5 $(POIFILE)
 	echo "Obtaining new OSM data file " $@
 	#FIXME: download only if needed 
 	# -- md5 $@ | grep $(shell cut -f 1 -d " " $< ) && 
