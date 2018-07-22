@@ -16,6 +16,8 @@ SPLITTERJAR=$(TOOLS_DIR)/${SPLITTER}/splitter.jar
 OSMCONVERT=$(TOOLS_DIR)/osmconvert/osmconvert
 PHYGHTMAP_DIR=$(TOOLS_DIR)/$(PHYGHTMAP)
 PHYGHTMAP=/usr/local/bin/phyghtmap
+SRTM_DIR=./var/srtm
+HGT_DIR=$(SRTM_DIR)/hgt
 
 OPTIONS=./style/opentopomap_options
 SEA=./var/sea
@@ -109,7 +111,7 @@ $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
 
 # Create SRTM OSM
 $(SRTM_DIR)/%.osm.pbf: $(BOUNDS)/%.poly
-	$(PHYGHTMAP) --polygon=$< -j 2 -s 10 -0 --source=view3 --max-nodes-per-tile=0 --max-nodes-per-way=0 --pbf
+	$(PHYGHTMAP) --hgtdir= --polygon=$< -j 2 -s 10 -0 --source=view3 --max-nodes-per-tile=0 --max-nodes-per-way=0 --pbf
 
 
 # Create an IMG Map file

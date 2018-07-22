@@ -10,3 +10,4 @@ var/poi
 bin/tools/osmconvert/osmconvert
 var/tmp/
 style/typ/osmmap.img
+var/srtm/hgt
