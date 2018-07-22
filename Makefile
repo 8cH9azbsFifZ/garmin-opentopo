@@ -1,8 +1,5 @@
-# do not remove these files
-.PRECIOUS: %.pbf %.img %.poly
-
+# do not remove tmp files
 .SECONDARY:
-
 
 MAPS = hessen rheinland-pfalz
 
