@@ -11,14 +11,14 @@ or build a specific map using
 ```
 # make maps/hessen-latest.img
 ```
+## Features
+- TBD
 
 ## Todo
 - FIXMEs in Makefile
-- Render contour map once
-- Include caves from poi list
-- Create a virtual machine including all files...
 - Better icon for mines
 - Include contour in one map file: http://www.mkgmap.org.uk/pipermail/mkgmap-dev/2018q1/028154.html
+- Colored Input - for differnt pois...
 
 ## Dependencies
 - gnumake
