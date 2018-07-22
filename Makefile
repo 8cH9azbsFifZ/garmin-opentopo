@@ -1,5 +1,5 @@
 # do not remove these files
-.PRECIOUS: %.pbf %.img
+.PRECIOUS: %.pbf %.img %.poly
 
 MAPS = hessen rheinland-pfalz
 
@@ -111,7 +111,7 @@ $(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%.osm.pbf
 
 # Create SRTM OSM
 $(SRTM_DIR)/%.osm.pbf: $(BOUNDS)/%.poly
-	$(PHYGHTMAP) --output-prefix=$(SRTM_DIR)/% --hgtdir=$(HGT_DIR) --polygon=$< -j 2 -s 10 -0 --source=view3 --max-nodes-per-tile=0 --max-nodes-per-way=0 --pbf
+	$(PHYGHTMAP) --output-prefix=$(SRTM_DIR)/$(notdir $@) --hgtdir=$(HGT_DIR) --polygon=$< -j 2 -s 10 -0 --source=view3 --max-nodes-per-tile=0 --max-nodes-per-way=0 --pbf
 
 
 # Create an IMG Map file
