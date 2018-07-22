@@ -122,7 +122,8 @@ $(SRTM_DIR)/%/00003535.osm.pbf: $(SRTM_DIR)/%.osm.pbf
 
 # Create an IMG Map file
 # FIXME: magic numbers
-$(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt $(SRTM_DIR)/%/00003535.osm.pbf
+$(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt 
+#$(SRTM_DIR)/%/00003535.osm.pbf
 	echo "Building new map IMG file " $@
 	#mm="-Xmx1536M" # Memory limitation
 	echo	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
