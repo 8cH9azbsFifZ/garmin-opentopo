@@ -32,7 +32,7 @@ OUTPUT=./var/output
 POI_DIR=./var/poi
 POIFILE=$(POI_DIR)/poi.osm
 
-# TODO: PHYGHTMAP
+# TODO: PHYGHTMAP Installation - in makefile?
 # Download 
 #$(PHYGHTMAP_DIR)/setup.py:
 #	echo "Download new " $@
