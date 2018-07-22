@@ -120,12 +120,12 @@ $(SRTM_DIR)/%/00003535.osm.pbf: $(SRTM_DIR)/%.osm.pbf
 	test -d $(dir $@) || mkdir $(dir $@)
 	java -jar $(SPLITTERJAR) --mapid=3535 --output-dir=$(dir $@) $<
 
-
 # Create an IMG Map file
-$(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt
+# FIXME: magic numbers
+$(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUNDS)/version.txt $(SEA)/version.txt $(SRTM_DIR)/%/00003535.osm.pbf
 	echo "Building new map IMG file " $@
 	#mm="-Xmx1536M" # Memory limitation
-	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
+	echo	java -jar $(MKGMAPJAR) -c $(OPTIONS) --style-file=$(STYLEFILE) \
     --precomp-sea=$(SEA) \
     --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(dir $<)/*.pbf $(TYPFILE)
 	mv $(OUTPUT)/gmapsupp.img $@
