@@ -29,10 +29,6 @@ OUTPUT=./var/output
 POI_DIR=./var/poi
 POIFILE=$(POI_DIR)/poi.osm
 
-# Build OSM convert
-$(OSMCONVERT): $(OSMCONVERT).c
-	gcc $< -lz -O3 -o $@
-
 # Convert POI file
 # TODO: - Colored Input - for differnt pois...
 $(POI_DIR)/%.osm: $(POI_DIR)/%.gpx

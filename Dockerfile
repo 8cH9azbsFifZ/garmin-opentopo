@@ -10,5 +10,6 @@ ADD . /garmin/
 #RUN wget http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.20.orig.tar.gz
 RUN cd /tmp ; tar xzf /garmin/var/download/phyghtmap_2.20.orig.tar.gz ; cd phyghtmap-2.20 ; python setup.py install
 
-RUN apt-get -y install gpsbabel
+RUN apt-get -y install gpsbabel 
+RUN apt-get -y install osmctools
 
