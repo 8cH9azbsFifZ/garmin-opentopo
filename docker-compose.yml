@@ -1,0 +1,5 @@
+app:
+    build: .
+    command: /usr/bin/xeyes
+    volumes:
+     - ./var:/garmin/var
