@@ -1,5 +1,9 @@
-app:
+app: 
+    stdin_open: true
+    tty: true
     build: .
-    command: /usr/bin/xeyes
+    entrypoint: /bin/bash
     volumes:
-     - ./var:/garmin/var
+     - mapinput:/garmin/var/download
+     - bounds:/garmin/var/bounds
+     - sea:/garmin/var/sea
