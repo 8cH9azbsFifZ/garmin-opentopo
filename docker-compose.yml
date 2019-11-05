@@ -6,5 +6,6 @@ app:
      - garmin_download:/garmin/var/download
 download:
     build: .
+    command: ./bin/prepare_sea.sh
     volumes:
      - garmin_download:/garmin/var/download

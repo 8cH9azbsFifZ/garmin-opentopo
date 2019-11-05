@@ -21,3 +21,5 @@ ADD style /garmin/style
 ADD bin /garmin/bin
 ADD var /garmin/var
 ADD maps /garmin/maps
+
+WORKDIR /garmin

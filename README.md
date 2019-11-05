@@ -4,10 +4,7 @@
 
 ```
 # docker-compose run app
-# cd /garmin
 # make var/download/bounds.zip
-# make var/download/sea.zip
-# make var/sea/version.txt
 # make var/bounds/version.txt
 # make var/bounds/hessen.poly
 # wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf && mv hessen-latest.osm.pbf var/download

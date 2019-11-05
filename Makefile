@@ -45,18 +45,6 @@ $(DOWNLOAD)/bounds.zip:
 	echo "Obtaining new file " $<
 	wget -O $(DOWNLOAD)/bounds.zip http://osm.thkukuk.de/data/bounds-latest.zip
 
-# Download Sea
-$(DOWNLOAD)/sea.zip:
-	echo "Obtaining new file " $<
-	wget -O $(DOWNLOAD)/sea.zip http://osm.thkukuk.de/data/sea-latest.zip
-
-# Unpack sea
-$(SEA)/version.txt: $(DOWNLOAD)/sea.zip
-	echo "Unzip " $<
-	unzip $(PWD)/$(DOWNLOAD)/sea.zip -d  $(SEA)
-	# fix, such that extracted files are newer than archive (hack)
-	find $(SEA) -type f -exec touch {} \;
-
 # Unpack boundaries
 $(BOUNDS)/version.txt: $(DOWNLOAD)/bounds.zip
 	echo "Unzip " $<
