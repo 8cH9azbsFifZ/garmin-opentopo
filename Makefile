@@ -13,9 +13,9 @@ TYPFILE = ./style/typ/OpenTopoMap.typ
 TOOLS_DIR=./bin/tools
 MKGMAPJAR=$(TOOLS_DIR)/$(MKGMAP)/mkgmap.jar
 SPLITTERJAR=$(TOOLS_DIR)/${SPLITTER}/splitter.jar
-OSMCONVERT=$(TOOLS_DIR)/osmconvert/osmconvert
+OSMCONVERT=osmconvert
 PHYGHTMAP_DIR=$(TOOLS_DIR)/$(PHYGHTMAP)
-PHYGHTMAP=/usr/local/bin/phyghtmap
+PHYGHTMAP=phyghtmap
 SRTM_DIR=./var/srtm
 HGT_DIR=$(SRTM_DIR)/hgt
 
@@ -29,10 +29,6 @@ OUTPUT=./var/output
 POI_DIR=./var/poi
 POIFILE=$(POI_DIR)/poi.osm
 
-# Build OSM convert
-$(OSMCONVERT): $(OSMCONVERT).c
-	gcc $< -lz -O3 -o $@
-
 # Convert POI file
 # TODO: - Colored Input - for differnt pois...
 $(POI_DIR)/%.osm: $(POI_DIR)/%.gpx
@@ -40,18 +36,19 @@ $(POI_DIR)/%.osm: $(POI_DIR)/%.gpx
 	gpsbabel -i gpx -f $< -o osm,tagnd="man_made:adit" -F $@
 
 # Create a .TYP file 
+# Default file already included
 $(TYPFILE): ./style/typ/OpenTopoMap.txt
 	java -jar $(MKGMAPJAR) --family-id=35 --output-dir=./style/typ $<
 
 # Download Boundaries
 $(DOWNLOAD)/bounds.zip:
 	echo "Obtaining new file " $<
-	wget -O $(DOWNLOAD)/bounds.zip http://osm2.pleiades.uni-wuppertal.de/bounds/latest/bounds.zip
+	wget -O $(DOWNLOAD)/bounds.zip http://osm.thkukuk.de/data/bounds-latest.zip
 
 # Download Sea
 $(DOWNLOAD)/sea.zip:
 	echo "Obtaining new file " $<
-	wget -O $(DOWNLOAD)/sea.zip http://osm2.pleiades.uni-wuppertal.de/sea/latest/sea.zip
+	wget -O $(DOWNLOAD)/sea.zip http://osm.thkukuk.de/data/sea-latest.zip
 
 # Unpack sea
 $(SEA)/version.txt: $(DOWNLOAD)/sea.zip
@@ -70,6 +67,8 @@ $(BOUNDS)/version.txt: $(DOWNLOAD)/bounds.zip
 # Download Boundary Polygons
 COUNTRY=europe/germany
 #FIXME: country stuff in variable?
+
+#wget http://download.geofabrik.de/europe/germany/hessen.poly
 $(BOUNDS)/%.poly:
 	echo "Download new " $@
 	wget -O $@ http://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
@@ -78,10 +77,12 @@ $(BOUNDS)/%.poly:
 FORCE:
 
 # Download latest OSM data
+#  wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf.md5
 $(DOWNLOAD)/%-latest.osm.pbf.md5: FORCE
 	echo "Obtaining new MD5 OSM data file " $@
 	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
+#  wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf
 $(DOWNLOAD)/%-latest.osm.pbf: $(DOWNLOAD)/%-latest.osm.pbf.md5 $(POIFILE)
 	echo "Obtaining new OSM data file " $@
 	#FIXME: download only if needed 
