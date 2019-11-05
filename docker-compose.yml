@@ -1,5 +1,10 @@
 app:
     build: .
+    #image: sdlfkj31h/garmin-opentopo:0.0.1
     #command: /usr/bin/xeyes
+    volumes:
+     - garmin_download:/garmin/var/download
+download:
+    build: .
     volumes:
      - garmin_download:/garmin/var/download
