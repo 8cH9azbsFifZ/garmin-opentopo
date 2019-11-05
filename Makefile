@@ -40,18 +40,6 @@ $(POI_DIR)/%.osm: $(POI_DIR)/%.gpx
 $(TYPFILE): ./style/typ/OpenTopoMap.txt
 	java -jar $(MKGMAPJAR) --family-id=35 --output-dir=./style/typ $<
 
-# Download Boundaries
-$(DOWNLOAD)/bounds.zip:
-	echo "Obtaining new file " $<
-	wget -O $(DOWNLOAD)/bounds.zip http://osm.thkukuk.de/data/bounds-latest.zip
-
-# Unpack boundaries
-$(BOUNDS)/version.txt: $(DOWNLOAD)/bounds.zip
-	echo "Unzip " $<
-	unzip $(PWD)/$(DOWNLOAD)/bounds.zip -d  $(BOUNDS)
-	# fix, such that extracted files are newer than archive (hack)
-	find $(BOUNDS) -type f -exec touch {} \;
-
 # Download Boundary Polygons
 COUNTRY=europe/germany
 #FIXME: country stuff in variable?

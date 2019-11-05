@@ -4,8 +4,12 @@ app:
     #command: /usr/bin/xeyes
     volumes:
      - garmin_download:/garmin/var/download
+     - garmin_sea:/garmin/var/sea
+     - garmin_bounds:/garmin/var/bounds
 download:
     build: .
     command: ./bin/prepare_sea.sh
     volumes:
      - garmin_download:/garmin/var/download
+     - garmin_sea:/garmin/var/sea
+     - garmin_bounds:/garmin/var/bounds

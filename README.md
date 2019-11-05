@@ -3,9 +3,9 @@
 *Status*: WIP...
 
 ```
+# docker-compose up download
 # docker-compose run app
-# make var/download/bounds.zip
-# make var/bounds/version.txt
+
 # make var/bounds/hessen.poly
 # wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf && mv hessen-latest.osm.pbf var/download
 # wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf.md5 && mv hessen-latest.osm.pbf var/download
