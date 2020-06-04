@@ -1,6 +1,7 @@
 # do not remove tmp files
 .SECONDARY:
 
+# FIXME: other regions?
 MAPS = hessen rheinland-pfalz
 
 MKGMAP=mkgmap-r4193

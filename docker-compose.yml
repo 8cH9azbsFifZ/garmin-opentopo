@@ -1,15 +1,23 @@
-app:
-    build: .
-    #image: sdlfkj31h/garmin-opentopo:0.0.1
+version: '3'
+services:
+    #app: FIXME: re-enable app container
+    #image: asdlfkj31h/garmin-opentopo:latest
     #command: /usr/bin/xeyes
-    volumes:
-     - garmin_download:/garmin/var/download
-     - garmin_sea:/garmin/var/sea
-     - garmin_bounds:/garmin/var/bounds
-download:
-    build: .
-    command: ./bin/prepare_sea.sh
-    volumes:
-     - garmin_download:/garmin/var/download
-     - garmin_sea:/garmin/var/sea
-     - garmin_bounds:/garmin/var/bounds
+    #    volumes:
+    #    - garmin_download:/garmin/var/download
+    #    - garmin_sea:/garmin/var/sea
+    #    - garmin_bounds:/garmin/var/bounds
+
+    download:
+        image: asdlfkj31h/garmin-opentopo:latest
+        command: ./bin/prepare_sea.sh
+        volumes:
+        - garminmaps:/garmin/
+
+volumes:
+    garminmaps:
+        driver: local
+        driver_opts:
+            type: cifs
+            o: username=garminmaps,password=garminmaps
+            device: "//t20/garminmaps"
