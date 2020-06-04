@@ -17,10 +17,11 @@ RUN apt-get -y install default-jre
 RUN apt-get -y install unzip
 
 RUN mkdir /garmin
-COPY Makefile /garmin
-ADD style /garmin/style
-ADD bin /garmin/bin
-ADD var /garmin/var
-ADD maps /garmin/maps
+RUN mkdir -p /opt/garmin
+COPY Makefile /opt/garmin
+ADD style /opt/garmin/style
+ADD bin /opt/garmin/bin
+ADD var /opt/garmin/var
+ADD maps /opt/garmin/maps
 
 WORKDIR /garmin
