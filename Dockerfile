@@ -16,7 +16,7 @@ RUN apt-get -y install default-jre
 #RUN apt-get -y install default-jdk
 RUN apt-get -y install unzip
 
-RUN mkdir /garmin
+# Store garmin scripts
 RUN mkdir -p /opt/garmin
 COPY Makefile /opt/garmin
 ADD style /opt/garmin/style
@@ -24,4 +24,7 @@ ADD bin /opt/garmin/bin
 ADD var /opt/garmin/var
 ADD maps /opt/garmin/maps
 
+RUN mkdir /garmin
 WORKDIR /garmin
+
+# FIXME Export /garmin as volume for map data (persistent)
