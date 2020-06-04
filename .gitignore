@@ -1,16 +1,1 @@
-.DS_Store
-output/
-var/download/
-maps/
-var/data/
-var/output/
-var/poi
-bin/tools/osmconvert/osmconvert
-var/tmp/
-style/typ/osmmap.img
-var/srtm/hgt
-style/opentopomap/osmmap.img
-style/opentopomap/osmmap.tdb
-style/typ/OpenTopoMap.typ
-style/opentopomap/OpenTopoMap.typ
-var/srtm/
+docker-compose.yml
