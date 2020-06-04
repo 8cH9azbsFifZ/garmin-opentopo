@@ -24,6 +24,9 @@ ADD bin /opt/garmin/bin
 ADD var /opt/garmin/var
 ADD maps /opt/garmin/maps
 
+# Store FZK scripts
+ADD lib/fzk /opt/fzk
+
 RUN mkdir /garmin
 WORKDIR /garmin
 
