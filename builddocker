@@ -1,5 +1,6 @@
 #!/bin/sh
 VER=0.5
 docker build . -t asdlfkj31h/garmin-opentopo:${VER} -t asdlfkj31h/garmin-opentopo:latest
-docker push
+docker push asdlfkj31h/garmin-opentopo:${VER}
+docker push asdlfkj31h/garmin-opentopo:latest
 
