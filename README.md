@@ -17,8 +17,16 @@
 ```
 # make maps/hessen.img
 ```
-## Docker images
-Latest image: sdlfkj31h/garmin-opentopo:0.0.1
+## Docker images - FZK 
+- WIP 
+docker run --rm -it asdlfkj31h/garmin-opentopo:latest bash
+
+    Directory /opt/fzk/Freizeitkarte-Entwicklung/work created.
+    Directory /opt/fzk/Freizeitkarte-Entwicklung/work/bootstrap created.
+
+
+
+
 
 ## Features
 - TBD

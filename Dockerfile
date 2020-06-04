@@ -10,7 +10,7 @@ RUN pip  install cycler pyparsing matplotlib http cookiejar bs4 lxml request
 ADD install /install
 RUN cd /tmp ; tar xzf /install/phyghtmap_2.20.orig.tar.gz ; cd phyghtmap-2.20 ; python setup.py install
 
-RUN apt-get -y install wget
+RUN apt-get -y install wget 
 RUN mkdir -p /usr/share/man/man1
 RUN apt-get -y install default-jre
 #RUN apt-get -y install default-jdk
@@ -25,6 +25,7 @@ ADD var /opt/garmin/var
 ADD maps /opt/garmin/maps
 
 # Store FZK scripts
+RUN apt-get -y install curl
 ADD lib/fzk /opt/fzk
 
 RUN mkdir /garmin
