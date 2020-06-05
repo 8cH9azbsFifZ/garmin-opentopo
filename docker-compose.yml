@@ -9,10 +9,18 @@ services:
         - sea:/garmin/var/sea
 
 
+    #mt_bootstrap:
+    #    image: asdlfkj31h/garmin-opentopo:latest
+    #    command: /opt/garmin/bin/prepare_fzk.sh
+    #    volumes:
+    #    - garminmaps:/garmin/
+    #    - bounds:/garmin/bounds
+    #    - sea:/garmin/sea        
+
     mt:
         image: asdlfkj31h/garmin-opentopo:latest
-        command: /opt/garmin/bin/prepare_fzk.sh
+        command: ls /garmin/sea
         volumes:
         - garminmaps:/garmin/
-        - bounds:/garmin/bounds
-        - sea:/garmin/sea        
+        - bounds:/garmin/bounds/
+        - sea:/garmin/sea/ 
