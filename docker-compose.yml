@@ -19,12 +19,15 @@ services:
 
     create:
         image: asdlfkj31h/garmin-opentopo:latest
-        command: /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/mt.pl create Freizeitkarte_RHEINLAND-PFALZ 
+        command: /opt/garmin/bin/fzk_workflow.sh
+        environment: 
+            region: "Freizeitkarte_RHEINLAND-PFALZ"
+            lang: "de"
         volumes:
-        - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
-        - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
-        - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
-        - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work
+            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
+            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+            - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
+            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
 
 
     mt:
@@ -34,10 +37,11 @@ services:
             region: "Freizeitkarte_RHEINLAND-PFALZ"
             lang: "de"
         volumes:
-        - garminmaps:/garmin/
-        - bounds:/garmin/bounds/:ro
-        - sea:/garmin/sea/:ro
-        - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
-        - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
-        - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
-        - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work        
+            - garminmaps:/garmin/
+            - bounds:/garmin/bounds/:ro
+            - sea:/garmin/sea/:ro
+            - install:/garmin/map_gps:ro
+            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
+            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+            - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
+            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work        
