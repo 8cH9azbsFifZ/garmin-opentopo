@@ -24,3 +24,4 @@ RUN mkdir /garmin
 WORKDIR /garmin
 
 VOLUME ["/garmin", "/garmin/sea", "/garmin/bounds"]
+#FIXME: other volumes
