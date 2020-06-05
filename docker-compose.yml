@@ -19,7 +19,7 @@ services:
 
     mt:
         image: asdlfkj31h/garmin-opentopo:latest
-        command: /garmin/mt.pl -?
+        command: ls /garmin/
         volumes:
         - garminmaps:/garmin/
         - bounds:/garmin/bounds/
