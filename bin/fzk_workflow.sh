@@ -18,10 +18,11 @@ echo join       = 3.  join osm and elevation data
 find work/$region/Freizeitkarte*pbf ||./mt.pl join $region
 
 echo split      = 4.  split map data into tiles
-./mt.pl split $region
-
+find work/$region/*.osm.gz ||./mt.pl split $region
 
 echo build      = 5.  build map files (img, mdx, tdb)
+./mt.pl build $region
+
 echo gmap       = 6.  create gmap file (for BaseCamp OS X, Windows)
 echo nsis       = 6.  create nsis installer (full installer for Windows)
 echo gmapsupp   = 6.  create gmapsupp image (for GPS receiver)
