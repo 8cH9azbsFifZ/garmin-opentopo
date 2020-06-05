@@ -32,6 +32,7 @@ services:
         command: find /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work
         environment: 
             region: "Freizeitkarte_RHEINLAND-PFALZ"
+            lang: "de"
         volumes:
         - garminmaps:/garmin/
         - bounds:/garmin/bounds/:ro
