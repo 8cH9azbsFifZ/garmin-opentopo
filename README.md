@@ -34,8 +34,8 @@
 germany Total time taken: 1 hour 48 minutes 3 seconds
 
 # Releases
+- Version 0.8 baseline with workflow fzk: rlp
 - Version 0.7 baseline with working bootstrap: bounds & sea
 - Version 0.6 baseline with working fzk dev
 - Version 0.4 starts merge with fzk development entvironment
-- Version 0.3 works with Makefile (cf. docu in makefile itself)
-
+- Version up to 0.3 works with Makefile (cf. docu in makefile itself)
