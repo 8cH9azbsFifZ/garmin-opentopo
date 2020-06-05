@@ -17,10 +17,24 @@ services:
     #    - bounds:/garmin/bounds
     #    - sea:/garmin/sea        
 
+    create:
+        image: asdlfkj31h/garmin-opentopo:latest
+        command: /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/mt.pl create Freizeitkarte_RHEINLAND-PFALZ 
+        volumes:
+        - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
+        - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+        - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
+        - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work
+
+
     mt:
         image: asdlfkj31h/garmin-opentopo:latest
-        command: ls /garmin/
+        command: find /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work
         volumes:
         - garminmaps:/garmin/
-        - bounds:/garmin/bounds/
-        - sea:/garmin/sea/ 
+        - bounds:/garmin/bounds/:ro
+        - sea:/garmin/sea/:ro
+        - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
+        - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+        - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
+        - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work        
