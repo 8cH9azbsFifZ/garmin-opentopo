@@ -27,7 +27,9 @@ echo gmap       = 6.  create gmap file (for BaseCamp OS X, Windows)
 find work/${region}_$lang/ -name *.gmap ||./mt.pl gmap $region
 
 echo nsis       = 6.  create nsis installer (full installer for Windows)
-
+# FIXME: UTF8 Problem
 
 echo gmapsupp   = 6.  create gmapsupp image (for GPS receiver)
+
+
 echo imagedir   = 6.  create image directory (e.g. for QLandkarte)
