@@ -17,6 +17,7 @@ RUN apt-get -y install default-jre
 RUN apt-get -y install unzip
 RUN apt-get -y install curl
 RUN apt-get -y install rsync
+RUN apt-get -y install vim
 
 # Store garmin scripts
 RUN mkdir -p /opt/garmin

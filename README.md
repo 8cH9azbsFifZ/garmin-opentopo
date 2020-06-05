@@ -1,6 +1,8 @@
 # Building Garmin Maps from OSM data.
 
 *Status*: WIP...
+- Version 0.3 works with Makefile (cf. docu in makefile itself)
+- Version 0.4 starts merge with fzk development entvironment
 
 ```
 # docker-compose up download

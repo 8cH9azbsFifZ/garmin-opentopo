@@ -2598,7 +2598,7 @@ sub create_alltypfile_languages {
   
   # Initialize Variables
   # --------------------
-  my $typfileworkdir    = "$BASEPATH/work/typfiles";
+  my $typfileworkdir    = "$BASEPATH/work/typfiles"; # FIXME: workdir && ff!!
   my $typfileinstalldir = "$BASEPATH/install/typfiles";
   
   # Purge the directories if needed
@@ -5395,8 +5395,8 @@ sub bootstrap_environment {
   
   # Check if the bootstrap directory exists, else create it and go to it
   # --------------------------------------------------------------------
-  if ( !( -e "$BASEPATH/work" ) ) {
-    mkdir ( "$BASEPATH/work" );
+  if ( !( -e "$BASEPATH/work" ) ) { # FIXME && ff
+    mkdir ( "$BASEPATH/work" ); 
     printf { *STDOUT } ( "\nDirectory %s created.\n\n", "$BASEPATH/work" );
   }
   if ( !( -e $bootstrapdir ) ) {
@@ -5507,7 +5507,10 @@ sub bootstrap_environment {
   # First we take the boundaries (bigger file)
   foreach $actualurl ( @boundariesurl ) {
     
-    download_url( $actualurl, "bounds.zip");
+    if (! -e "$bootstrapdir/bounds.zip")
+    {
+      download_url( $actualurl, "bounds.zip");
+    }
         
     # Check Return Value
     if ( $? != 0 ) {
@@ -5532,7 +5535,10 @@ sub bootstrap_environment {
   # Now we take the seatiles (smaller file)
   foreach $actualurl ( @seaboundariesurl ) {
     
-    download_url($actualurl, "sea.zip");
+    if (! -e "$bootstrapdir/sea.zip")
+    {
+      download_url($actualurl, "sea.zip");
+    }
     
     # Check Return Value
     if ( $? != 0 ) {
