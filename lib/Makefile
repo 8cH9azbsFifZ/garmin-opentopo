@@ -50,8 +50,6 @@ $(BOUNDS)/%.poly:
 	echo "Download new " $@
 	wget -O $@ http://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
-# Force a rebuild
-FORCE:
 
 # Download latest OSM data
 #  wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf.md5
@@ -106,13 +104,6 @@ android: $(MAPS_DIR)/hessen-latest.img
 
 
 all: $(MAPS_DIR)/hessen-latest.img
-
-
-clean:
-	find $(BOUNDS) -type f -exec rm {} \;
-	find $(SEA) -type f -exec rm {} \;
-#FIXME: hgt
-	
 
 
 # wget -r -np -N http://geoweb.hft-stuttgart.de/SRTM/srtm_as_osm/
