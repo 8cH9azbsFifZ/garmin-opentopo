@@ -1,45 +1,17 @@
 # Building Garmin Maps from OSM data.
 
 *Status*: WIP...
-- Version 0.3 works with Makefile (cf. docu in makefile itself)
-- Version 0.4 starts merge with fzk development entvironment
-
-```
-# docker-compose up download
-# docker-compose run app
-
-# make var/bounds/hessen.poly
-# wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf && mv hessen-latest.osm.pbf var/download
-# wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf.md5 && mv hessen-latest.osm.pbf var/download
-# make maps/hessen.img
-```
-
-
-
-```
-# make maps/hessen.img
-```
-## Docker images - FZK 
-- WIP 
-docker run --rm -it asdlfkj31h/garmin-opentopo:latest bash
-
-    Directory /opt/fzk/Freizeitkarte-Entwicklung/work created.
-    Directory /opt/fzk/Freizeitkarte-Entwicklung/work/bootstrap created.
-
-
-
-
 
 ## Features
+- Self contained docker image for rendering osm maps for garmin devices.
 - TBD
+
+![Example map](doc/example.png)
+
 
 ## Todo
 - FIXMEs in Makefile
 - Better icon for mines
-
-## Dependencies
-- gnumake
-- gpsbabel
 
 ## References
 - Baseline for this code: [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap) 
@@ -48,6 +20,8 @@ docker run --rm -it asdlfkj31h/garmin-opentopo:latest bash
 - [MKGMAP](http://www.mkgmap.org.uk/download/mkgmap.html) and its [SPLITTER](http://www.mkgmap.org.uk/download/splitter.html)
 - [phyghtmap](http://katze.tfiu.de/projects/phyghtmap/)
 - Alternative download [Bike Extract SRTM OSM](https://extract.bbbike.org/)
+- Freizeitkarte development environment [github](https://github.com/freizeitkarte/fzk-mde-garmin)
+- Garmin Fenix 6 style files [github](https://github.com/ahotzler/garmin-fenix-6x-outdoor-typfile-AH)
 
 ## Howto adjust style
 - Which points to show in which zoom level? style/opentopomap/points
@@ -55,4 +29,8 @@ docker run --rm -it asdlfkj31h/garmin-opentopo:latest bash
 
 ## Time
 germany Total time taken: 1 hour 48 minutes 3 seconds
+
+# Releases
+- Version 0.3 works with Makefile (cf. docu in makefile itself)
+- Version 0.4 starts merge with fzk development entvironment
 
