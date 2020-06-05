@@ -10,6 +10,9 @@
 
 
 ## Todo
+- move lib to install
+- move in garmin dir (container)
+- merge styles opentopomap correctly
 - FIXMEs in Makefile
 - Better icon for mines
 
