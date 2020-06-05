@@ -1,4 +1,4 @@
-VER=0.6
+VER=0.7
 build:
 	docker build . -t asdlfkj31h/garmin-opentopo:${VER} -t asdlfkj31h/garmin-opentopo:latest
 push:
