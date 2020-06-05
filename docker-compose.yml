@@ -5,10 +5,14 @@ services:
         command: /opt/garmin/bin/prepare_sea.sh
         volumes:
         - garminmaps:/garmin/
+        - bounds:/garmin/var/bounds/
+        - sea:/garmin/var/sea
 
 
     mt:
         image: asdlfkj31h/garmin-opentopo:latest
         command: /opt/garmin/bin/prepare_fzk.sh
         volumes:
-        - garminmaps:/garmin/        
+        - garminmaps:/garmin/
+        - bounds:/garmin/bounds
+        - sea:/garmin/sea        
