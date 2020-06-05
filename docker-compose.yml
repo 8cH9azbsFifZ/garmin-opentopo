@@ -30,6 +30,8 @@ services:
     mt:
         image: asdlfkj31h/garmin-opentopo:latest
         command: find /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work
+        environment: 
+            region: "Freizeitkarte_RHEINLAND-PFALZ"
         volumes:
         - garminmaps:/garmin/
         - bounds:/garmin/bounds/:ro
