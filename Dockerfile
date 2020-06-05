@@ -14,7 +14,6 @@ RUN apt-get -y install wget curl rsync vim unzip default-jre
 
 # Store garmin scripts
 RUN mkdir -p /opt/garmin
-COPY Makefile /opt/garmin
 ADD style /opt/garmin/style
 ADD bin /opt/garmin/bin
 ADD var /opt/garmin/var
