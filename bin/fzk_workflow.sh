@@ -30,6 +30,6 @@ echo nsis       = 6.  create nsis installer (full installer for Windows)
 # FIXME: UTF8 Problem
 
 echo gmapsupp   = 6.  create gmapsupp image (for GPS receiver)
-
+find work/${region}_$lang/$region.gmap ||./mt.pl gmapsupp $region
 
 echo imagedir   = 6.  create image directory (e.g. for QLandkarte)
