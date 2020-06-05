@@ -1,10 +1,8 @@
 #!/bin/bash
 
-test -d ||mkdir -p /garmin/fzk
-#cp -rv /opt/fzk/Freizeitkarte-Entwicklung/* /garmin/fzk
-rsync -avP /opt/fzk/Freizeitkarte-Entwicklung/. /garmin/fzk/.
+rsync -avP /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/. /garmin/.
 
-cd /garmin/fzk
+cd /garmin/
 
-/garmin/fzk/mt.pl bootstrap 
+./mt.pl bootstrap 
 
