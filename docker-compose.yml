@@ -1,6 +1,6 @@
 version: '3'
 services:
-    download:
+    gz_bootstrap:
         image: asdlfkj31h/garmin-opentopo:latest
         command: /opt/garmin/bin/prepare_sea.sh
         volumes:
