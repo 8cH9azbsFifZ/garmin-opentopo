@@ -31,6 +31,7 @@
 germany Total time taken: 1 hour 48 minutes 3 seconds
 
 # Releases
+- Version 0.6 baseline with working fzk dev
 - Version 0.4 starts merge with fzk development entvironment
 - Version 0.3 works with Makefile (cf. docu in makefile itself)
 
