@@ -15,6 +15,8 @@ RUN mkdir -p /usr/share/man/man1
 RUN apt-get -y install default-jre
 #RUN apt-get -y install default-jdk
 RUN apt-get -y install unzip
+RUN apt-get -y install curl
+RUN apt-get -y install rsync
 
 # Store garmin scripts
 RUN mkdir -p /opt/garmin
@@ -25,7 +27,7 @@ ADD var /opt/garmin/var
 ADD maps /opt/garmin/maps
 
 # Store FZK scripts
-RUN apt-get -y install curl
+
 ADD lib/fzk /opt/fzk
 
 RUN mkdir /garmin

@@ -13,3 +13,10 @@ services:
         command: /opt/garmin/bin/prepare_sea.sh
         volumes:
         - garminmaps:/garmin/
+
+
+    mt:
+        image: asdlfkj31h/garmin-opentopo:latest
+        command: /opt/garmin/bin/prepare_fzk.sh
+        volumes:
+        - garminmaps:/garmin/        
