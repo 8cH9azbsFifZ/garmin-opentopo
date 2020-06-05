@@ -25,4 +25,4 @@ ADD lib/ /opt/lib
 RUN mkdir /garmin
 WORKDIR /garmin
 
-# FIXME Export /garmin as volume for map data (persistent)
+VOLUME ["/garmin", "/garmin/sea", "/garmin/bounds"]
