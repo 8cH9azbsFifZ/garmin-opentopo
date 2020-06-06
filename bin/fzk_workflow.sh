@@ -6,7 +6,7 @@ cd /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/
 echo "bootstrap  =     Complete the Environment with needed downloads (boundaries)"
 
 echo "create     = 1.  (re)create all directories"
-./mt.pl create $region
+test -d work/$region/||./mt.pl create $region
 
 echo "fetch_osm  = 2a. fetch osm data from url"
 find work/$region/Kartendaten*pbf ||./mt.pl fetch_osm $region
