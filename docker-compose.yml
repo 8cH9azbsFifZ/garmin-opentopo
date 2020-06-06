@@ -17,12 +17,14 @@ services:
     #    - bounds:/garmin/bounds
     #    - sea:/garmin/sea        
 
-    create:
+    workflow:
         image: asdlfkj31h/garmin-opentopo:latest
         command: /opt/garmin/bin/fzk_workflow.sh
         environment: 
             region: "Freizeitkarte_RHEINLAND-PFALZ"
             lang: "de"
+            typ: "opentopomap"
+            style: "opentopomap"
         volumes:
             - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
             - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
