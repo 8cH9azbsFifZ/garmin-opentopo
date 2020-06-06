@@ -7,6 +7,7 @@ echo "bootstrap  =     Complete the Environment with needed downloads (boundarie
 
 echo "create     = 1.  (re)create all directories"
 test -d work/$region/||./mt.pl create $region
+#FIXME: force option as environment
 
 echo "create typfiles if neccessary"
 find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
