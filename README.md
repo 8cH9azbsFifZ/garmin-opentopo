@@ -26,12 +26,17 @@
 - Freizeitkarte development environment [github](https://github.com/freizeitkarte/fzk-mde-garmin)
 - Garmin Fenix 6 style files [github](https://github.com/ahotzler/garmin-fenix-6x-outdoor-typfile-AH)
 
+
 ## Howto adjust style
 - Which points to show in which zoom level? style/opentopomap/points
 - Icons in XPM style/typ/OpenTopoMap.typ
 
 ## Time
 germany Total time taken: 1 hour 48 minutes 3 seconds
+
+# Licenses
+- (c) Map: FZK project (free for private use); Map data: OpenStreetMap contributors; Contour data: U.S. Geological Survey or J. de Ferranti
+
 
 # Releases
 - Version 0.8 baseline with workflow fzk: rlp
