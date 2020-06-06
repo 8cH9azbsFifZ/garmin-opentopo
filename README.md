@@ -31,12 +31,16 @@
 - Which points to show in which zoom level? style/opentopomap/points
 - Icons in XPM style/typ/OpenTopoMap.typ
 
+## Requirements
+- Docker 
+- 2 GB Memory
+- more than 5 GB storage
+
 ## Time
 germany Total time taken: 1 hour 48 minutes 3 seconds
 
 # Licenses
 - (c) Map: FZK project (free for private use); Map data: OpenStreetMap contributors; Contour data: U.S. Geological Survey or J. de Ferranti
-
 
 # Releases
 - Version 0.8 baseline with workflow fzk: rlp
