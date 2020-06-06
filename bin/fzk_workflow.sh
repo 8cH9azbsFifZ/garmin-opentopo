@@ -8,6 +8,9 @@ echo "bootstrap  =     Complete the Environment with needed downloads (boundarie
 echo "create     = 1.  (re)create all directories"
 test -d work/$region/||./mt.pl create $region
 
+echo "create typfiles if neccessary"
+find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
+
 echo "fetch_osm  = 2a. fetch osm data from url"
 find work/$region/Kartendaten*pbf ||./mt.pl fetch_osm $region
 
@@ -22,12 +25,13 @@ find work/$region/*.osm.gz ||./mt.pl split $region
 
 #
 # --typfile=freizeit.TYP --style=fzk
-#opts="--typfile=freizeit.TYP --style=fzk" #default
+opts="--typfile=freizeit.TYP --style=fzk" #default
 echo "build      = 5.  build map files (img, mdx, tdb)"
 find work/${region}_$lang/ -name *.img ||./mt.pl $opts build $region 
 
 echo "gmap       = 6.  create gmap file (for BaseCamp OS X, Windows)"
 find work/${region}_$lang/ -name *.gmap ||./mt.pl $opts gmap $region
+#rsync -avP work/${region}_$lang/$region.gmap install/$region.gmap
 
 #echo nsis       = 6.  create nsis installer (full installer for Windows)
 # FIXME: UTF8 Problem
