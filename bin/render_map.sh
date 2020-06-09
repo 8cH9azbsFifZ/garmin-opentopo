@@ -12,7 +12,7 @@ find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
 
 
 # Remder the map
-# --typfile=freizeit.TYP --style=fzk
+--typfile=outdoor.TYP --style=fzk
 opts="--typfile=freizeit.TYP --style=fzk" #default
 echo "build      = 5.  build map files (img, mdx, tdb)"
 ./mt.pl $opts build $region 
