@@ -18,10 +18,11 @@ ADD bin /opt/garmin/bin
 ADD var /opt/garmin/var
 
 # Store FZK scripts
+#FIXME: configure as working directory
 ADD lib/ /opt/lib
 
 RUN mkdir /garmin
 WORKDIR /garmin
 
 VOLUME ["/garmin", "/garmin/sea", "/garmin/bounds"]
-#FIXME: other volumes
+#FIXME: other volumes, cf. workflow
