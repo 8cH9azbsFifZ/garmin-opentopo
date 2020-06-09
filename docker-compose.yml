@@ -1,6 +1,7 @@
 version: '3'
 services:
     gz_bootstrap:
+        #image: asdlfkj31h/garmin-opentopo:0.8
         image: asdlfkj31h/garmin-opentopo:latest
         command: /opt/garmin/bin/prepare_sea.sh
         volumes:
@@ -18,6 +19,7 @@ services:
     #    - sea:/garmin/sea        
 
     workflow:
+        #image: asdlfkj31h/garmin-opentopo:0.8
         image: asdlfkj31h/garmin-opentopo:latest
         command: /opt/garmin/bin/fzk_workflow.sh
         environment: 
@@ -33,6 +35,7 @@ services:
 
 
     mt:
+        #image: asdlfkj31h/garmin-opentopo:0.8
         image: asdlfkj31h/garmin-opentopo:latest
         command: find /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work
         environment: 
