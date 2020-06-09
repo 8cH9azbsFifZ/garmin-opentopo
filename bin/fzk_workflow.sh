@@ -10,10 +10,10 @@ test -d work/$region/||./mt.pl create $region
 #FIXME: force option as environment
 
 
-# Prepare map raw data
-echo "create typfiles if neccessary"
-find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
 
+
+# Prepare map raw data
+# FIXME: separate data from rendering ..
 echo "fetch_osm  = 2a. fetch osm data from url"
 find work/$region/Kartendaten*pbf ||./mt.pl fetch_osm $region
 
@@ -27,15 +27,20 @@ echo "split      = 4.  split map data into tiles"
 find work/$region/*.osm.gz ||./mt.pl split $region
 
 
+# Prepare Typ Files
+echo "create typfiles if neccessary"
+find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
+
+
 
 # Remder the map
 # --typfile=freizeit.TYP --style=fzk
 opts="--typfile=freizeit.TYP --style=fzk" #default
 echo "build      = 5.  build map files (img, mdx, tdb)"
-find work/${region}_$lang/ -name *.img ||./mt.pl $opts build $region 
+./mt.pl $opts build $region 
 
 echo "gmap       = 6.  create gmap file (for BaseCamp OS X, Windows)"
-find work/${region}_$lang/ -name *.gmap ||./mt.pl $opts gmap $region
+./mt.pl $opts gmap $region
 
 #echo nsis       = 6.  create nsis installer (full installer for Windows)
 # FIXME: UTF8 Problem
