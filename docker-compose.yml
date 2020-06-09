@@ -1,7 +1,6 @@
 version: '3'
 services:
     gz_bootstrap:
-        #image: asdlfkj31h/garmin-opentopo:0.9
         image: asdlfkj31h/garmin-opentopo:latest
         command: /opt/garmin/bin/prepare_sea.sh
         volumes:
@@ -18,10 +17,20 @@ services:
     #    - bounds:/garmin/bounds
     #    - sea:/garmin/sea        
 
-    workflow:
-        #image: asdlfkj31h/garmin-opentopo:0.9
+    prepare_osm_tiles:
         image: asdlfkj31h/garmin-opentopo:latest
-        command: /opt/garmin/bin/fzk_workflow.sh
+        command: /opt/garmin/bin/prepare_osm_tiles.sh
+        environment: 
+            region: "Freizeitkarte_RHEINLAND-PFALZ"
+        volumes:
+            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
+            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+            - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
+            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
+
+    render_map:
+        image: asdlfkj31h/garmin-opentopo:latest
+        command: /opt/garmin/bin/render_map.sh
         environment: 
             region: "Freizeitkarte_RHEINLAND-PFALZ"
             lang: "de"
@@ -33,9 +42,7 @@ services:
             - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
             - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
 
-
     mt:
-        #image: asdlfkj31h/garmin-opentopo:0.9
         image: asdlfkj31h/garmin-opentopo:latest
         command: find /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work
         environment: 
