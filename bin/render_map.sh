@@ -10,6 +10,7 @@ echo "create typfiles if neccessary"
 find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
 
 # OpenTopo Map Style
+echo Create Opentopo typ
 #java -jar ./tools/mkgmap/mkgmap.jar --family-id=35 ./TYP/other_typ/OpenTopoMap.txt 
 java -jar ./tools/mkgmap/mkgmap.jar --family-id=5820 ./TYP/other_typ/OpenTopoMap.txt 
 mv OpenTopoMap.typ TYP
