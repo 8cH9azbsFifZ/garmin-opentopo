@@ -9,15 +9,15 @@ services:
         - sea:/garmin/var/sea
   
 
-    #prepare_osm_tiles:
-    #    image: asdlfkj31h/garmin-opentopo:latest
-    #    command: /opt/garmin/bin/prepare_osm_tiles.sh
-    #    environment: 
-    #        region: "Freizeitkarte_RHEINLAND-PFALZ"
-    #    volumes:
-    #        - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
-    #        - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
-    #        - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
+    prepare_osm_tiles:
+        image: asdlfkj31h/garmin-opentopo:latest
+        command: /opt/garmin/bin/prepare_osm_tiles.sh
+        environment: 
+            region: "Freizeitkarte_RHEINLAND-PFALZ"
+        volumes:
+            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
+            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
 
     render_map:
         image: asdlfkj31h/garmin-opentopo:latest

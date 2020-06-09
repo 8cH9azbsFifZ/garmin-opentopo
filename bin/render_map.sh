@@ -9,11 +9,16 @@ cd /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/
 echo "create typfiles if neccessary"
 find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
 
+# OpenTopo Map Style
+#java -jar ./tools/mkgmap/mkgmap.jar --family-id=35 ./TYP/other_typ/OpenTopoMap.txt 
+java -jar ./tools/mkgmap/mkgmap.jar --family-id=5820 ./TYP/other_typ/OpenTopoMap.txt 
+mv OpenTopoMap.typ TYP
 
 
 # Remder the map
---typfile=outdoor.TYP --style=fzk
-opts="--typfile=freizeit.TYP --style=fzk" #default
+#--typfile=outdoor.TYP --style=fzk
+#opts="--typfile=$PWD/TYP/freizeit.TYP --style=fzk" #default
+opts="--typfile=$PWD/TYP/OpenTopoMap.typ --style=opentopomap" #default
 echo "build      = 5.  build map files (img, mdx, tdb)"
 ./mt.pl $opts build $region 
 

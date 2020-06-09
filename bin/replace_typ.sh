@@ -6,6 +6,8 @@ imgfile=./install/Freizeitkarte_RHEINLAND-PFALZ_de/gmapsupp.img
 #FIXME
 cd /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung
 
+
+
 gmt=./tools/ReplaceTyp/gmt
 
 echo -n "Extracting Family ID: "
