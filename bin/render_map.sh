@@ -24,7 +24,10 @@ echo "gmap       = 6.  create gmap file (for BaseCamp OS X, Windows)"
 # FIXME: UTF8 Problem
 
 echo "gmapsupp   = 6.  create gmapsupp image (for GPS receiver)"
-find work/${region}_$lang/$region.gmap ||./mt.pl $opts gmapsupp $region
+./mt.pl $opts gmapsupp $region
+
+# Copy map data
 rsync -avP work/${region}_$lang/$region.gmap install/$region.gmap
 
 #echo imagedir   = 6.  create image directory (e.g. for QLandkarte)
+
