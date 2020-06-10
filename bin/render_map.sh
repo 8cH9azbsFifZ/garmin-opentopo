@@ -14,12 +14,14 @@ echo Create Opentopo typ
 #java -jar ./tools/mkgmap/mkgmap.jar --family-id=35 ./TYP/other_typ/OpenTopoMap.txt 
 java -jar ./tools/mkgmap/mkgmap.jar --family-id=5820 ./TYP/other_typ/OpenTopoMap.txt 
 mv OpenTopoMap.typ TYP
+# FIXME
+#5820 = RHEINLAND-PFALZ            = Freizeitkarte_RHEINLAND-PFALZ                     (de)
 
 
 # Remder the map
 #--typfile=outdoor.TYP --style=fzk
-#opts="--typfile=$PWD/TYP/freizeit.TYP --style=fzk" #default
-opts="--typfile=$PWD/TYP/OpenTopoMap.typ --style=opentopomap" #default
+opts="--typfile=$PWD/TYP/freizeit.TYP --style=fzk" #default
+#opts="--typfile=$PWD/TYP/OpenTopoMap.typ --style=opentopomap" #default
 echo "build      = 5.  build map files (img, mdx, tdb)"
 ./mt.pl $opts build $region 
 
@@ -33,7 +35,7 @@ echo "gmapsupp   = 6.  create gmapsupp image (for GPS receiver)"
 ./mt.pl $opts gmapsupp $region
 
 # Copy map data
-rsync -avP work/${region}_$lang/$region.gmap install/$region.gmap
+rsync -avP work/${region}_$lang/$region.gmap install/
 
 #echo imagedir   = 6.  create image directory (e.g. for QLandkarte)
 
