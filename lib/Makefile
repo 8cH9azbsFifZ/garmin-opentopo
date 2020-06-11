@@ -1,9 +1,3 @@
-# do not remove tmp files
-.SECONDARY:
-
-# FIXME: other regions?
-MAPS = hessen rheinland-pfalz
-
 MKGMAP=mkgmap-r4193
 SPLITTER=splitter-r591
 PHYGHTMAP=phyghtmap-2.20
@@ -36,10 +30,6 @@ $(POI_DIR)/%.osm: $(POI_DIR)/%.gpx
 	#FIXME: more than old mines?
 	gpsbabel -i gpx -f $< -o osm,tagnd="man_made:adit" -F $@
 
-# Create a .TYP file 
-# Default file already included
-$(TYPFILE): ./style/typ/OpenTopoMap.txt
-	java -jar $(MKGMAPJAR) --family-id=35 --output-dir=./style/typ $<
 
 # Download Boundary Polygons
 COUNTRY=europe/germany
@@ -50,12 +40,6 @@ $(BOUNDS)/%.poly:
 	echo "Download new " $@
 	wget -O $@ http://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
-
-# Download latest OSM data
-#  wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf.md5
-$(DOWNLOAD)/%-latest.osm.pbf.md5: FORCE
-	echo "Obtaining new MD5 OSM data file " $@
-	wget -O $@ https://download.geofabrik.de/$(COUNTRY)/$(notdir $@)
 
 #  wget https://download.geofabrik.de/europe/germany/hessen-latest.osm.pbf
 $(DOWNLOAD)/%-latest.osm.pbf: $(DOWNLOAD)/%-latest.osm.pbf.md5 $(POIFILE)
@@ -68,11 +52,6 @@ $(DOWNLOAD)/%-latest.osm.pbf: $(DOWNLOAD)/%-latest.osm.pbf.md5 $(POIFILE)
 	#Run with - in order to ignore the weird error codes returned...
 	-$(OSMCONVERT) $(POIFILE) $@.orig -o=$@
 
-# Split OSM files 
-$(DATA_DIR)/%/63240001.osm.pbf: $(DOWNLOAD)/%-latest.osm.pbf 
-	echo "Splitting " $<
-	test -d $(dir $@) || mkdir $(dir $@)
-	java -jar $(SPLITTERJAR) --precomp-sea=$(SEA) --output-dir=$(dir $@) $<
 
 # Create SRTM OSM
 $(SRTM_DIR)/%.osm.pbf: $(BOUNDS)/%.poly
@@ -95,16 +74,4 @@ $(MAPS_DIR)/%.img: $(DATA_DIR)/%/63240001.osm.pbf $(STYLEFILE) $(TYPFILE) $(BOUN
     --output-dir=$(OUTPUT) --bounds=$(BOUNDS) $(dir $<)/*.pbf $(TYPFILE)
 	mv $(OUTPUT)/gmapsupp.img $@
 
-# Push file to android device
-ORUXMAPS_DIR=/mnt/sdcard/oruxmaps/mapfiles
 
-android: $(MAPS_DIR)/hessen-latest.img
-#FIXME: with variables..
-	adb push $< $(ORUXMAPS_DIR)
-
-
-all: $(MAPS_DIR)/hessen-latest.img
-
-
-# wget -r -np -N http://geoweb.hft-stuttgart.de/SRTM/srtm_as_osm/
-#https://wiki.openstreetmap.org/wiki/SRTM

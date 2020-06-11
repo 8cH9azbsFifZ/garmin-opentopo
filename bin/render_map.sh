@@ -9,7 +9,7 @@ find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
 
 # OpenTopo Map Style
 echo Create Opentopo typ
-fid=$()./mt.pl -? |grep $region|cut -d " " -f 1)
+fid=$(./mt.pl -? |grep $region|cut -d " " -f 1)
 java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/OpenTopoMap.txt 
 mv OpenTopoMap.typ TYP
 
