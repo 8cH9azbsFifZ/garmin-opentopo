@@ -3,25 +3,19 @@
 #FIXME
 cd /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/
 
-
-
 # Prepare Typ Files
 echo "create typfiles if neccessary"
 find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
 
 # OpenTopo Map Style
 echo Create Opentopo typ
-#java -jar ./tools/mkgmap/mkgmap.jar --family-id=35 ./TYP/other_typ/OpenTopoMap.txt 
-java -jar ./tools/mkgmap/mkgmap.jar --family-id=5820 ./TYP/other_typ/OpenTopoMap.txt 
+fid=$()./mt.pl -? |grep $region|cut -d " " -f 1)
+java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/OpenTopoMap.txt 
 mv OpenTopoMap.typ TYP
-# FIXME
-#5820 = RHEINLAND-PFALZ            = Freizeitkarte_RHEINLAND-PFALZ                     (de)
 
 
 # Remder the map
-#--typfile=outdoor.TYP --style=fzk
-opts="--typfile=$PWD/TYP/freizeit.TYP --style=fzk" #default
-#opts="--typfile=$PWD/TYP/OpenTopoMap.typ --style=opentopomap" #default
+opts="--typfile=$PWD/TYP/$typ --style=$style" #default
 echo "build      = 5.  build map files (img, mdx, tdb)"
 ./mt.pl $opts build $region 
 
