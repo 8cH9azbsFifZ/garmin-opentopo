@@ -7,11 +7,16 @@ cd /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/
 echo "create typfiles if neccessary"
 find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
 
-# OpenTopo Map Style
+# OpenTopo Map Style typ
 echo Create Opentopo typ
 fid=$(./mt.pl -? |grep $region|cut -d " " -f 1)
 java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/OpenTopoMap.txt 
 mv OpenTopoMap.typ TYP
+
+# Fenix 6x typ
+java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/fenix-6x.txt 
+mv fenix-6x.typ TYP
+
 
 
 # Remder the map
