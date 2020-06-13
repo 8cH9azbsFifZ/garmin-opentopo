@@ -22,7 +22,9 @@ ADD var /opt/garmin/var
 ADD lib/ /opt/lib
 
 RUN mkdir /garmin
-WORKDIR /garmin
+#WORKDIR /garmin
+WORKDIR /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung
+
 
 VOLUME ["/garmin", "/garmin/sea", "/garmin/bounds"]
 #FIXME: other volumes, cf. workflow

@@ -39,6 +39,8 @@ services:
         environment: 
             region: "Freizeitkarte_RHEINLAND-PFALZ"
             lang: "de"
+            typ: "OpenTopoMap-Cave.typ" 
+            style: "opentopomap" 
         volumes:
             - garminmaps:/garmin/
             - bounds:/garmin/bounds/:ro
