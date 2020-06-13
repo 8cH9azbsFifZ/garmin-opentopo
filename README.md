@@ -43,6 +43,7 @@ germany Total time taken: 1 hour 48 minutes 3 seconds
 - (c) Map: FZK project (free for private use); Map data: OpenStreetMap contributors; Contour data: U.S. Geological Survey or J. de Ferranti
 
 # Releases
+- Version 0.11 baseline: fenix 6 typ works
 - Version 0.10 baseline: opentopomap works
 - Version 0.9 baseline: docker-compose up >> rlp maps created for basecamp and garmin in ./maps
 - Version 0.8 baseline with workflow fzk: rlp
