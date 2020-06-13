@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#FIXME
-cd /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/
-
 # Prepare Typ Files
 echo "create typfiles if neccessary"
 fid=$(./mt.pl -? |grep $region|cut -d " " -f 1)

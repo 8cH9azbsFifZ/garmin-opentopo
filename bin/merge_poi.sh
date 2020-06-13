@@ -18,13 +18,14 @@ gpsbabel -i gpx -f $poi_gpx  -o osm,tagnd="man_made:adit;disused:yes" -F $poi_os
 # nicht gut?
 # 10134671122
 
+#cp $kartendaten $kartendaten_orig # FIXME
 
-offset=4267112252
+
+offset=4267019648
 cat $poi_osm|awk -v rnd=$offset -F="' " '/node id/{l=$0;gsub("  <node id=","");m=$0;gsub(" .*","");n=$0;gsub("'\''","");a=++rnd;f="  <node id='\''"a"'\''"m;gsub("'\'\''-","",f);print f}/</{print}'>$poi_osm1
 #cat work/Freizeitkarte_RHEINLAND-PFALZ/RLP.osm|awk -v rnd=$offset -F="' " '/node id/{l=$0;gsub("  <node id=","");m=$0;gsub(" .*","");n=$0;gsub("'\''","");a=$0*-1+rnd;f="  <node id='\''"a"'\''"m;gsub("'\'\''-","",f);print f}/</{print}'>work/Freizeitkarte_RHEINLAND-PFALZ/RLP1.osm
 osmconvert $poi_osm1 -o=$poi_osm1.pbf
 
-#cp work/Freizeitkarte_RHEINLAND-PFALZ/Kartendaten_Freizeitkarte_RHEINLAND-PFALZ.osm.pbf work/Freizeitkarte_RHEINLAND-PFALZ/Kartendaten_Freizeitkarte_RHEINLAND-PFALZ.osm.pbf.orig
 
 # cf. https://wiki.openstreetmap.org/wiki/Import/Software#Negative_IDs
 
@@ -32,9 +33,10 @@ osmconvert $kartendaten_orig $poi_osm1 -o=$kartendaten1
 osmconvert $kartendaten1 |sed 's/changeset="1"/changeset="0"/g' > $kartendaten2
 osmconvert $kartendaten2 -o=$kartendaten
 
-osmconvert $kartendaten |grep -A4 -B4 "Grube Dorweiler"
+# osmconvert $kartendaten |grep -A4 -B4 "Grube Dorweiler"
+#https://www.google.de/maps/place/50%C2%B008'29.7%22N+7%C2%B026'26.8%22E/@50.1409961,7.4384441,16.33z/data=!4m5!3m4!1s0x0:0x0!8m2!3d50.141582!4d7.440785
 
 
-
+./mt.pl join $region
 
 ./mt.pl split $region
