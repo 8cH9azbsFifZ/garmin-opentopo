@@ -29,13 +29,18 @@ osmconvert $poi_osm1 -o=$poi_osm1.pbf
 
 # cf. https://wiki.openstreetmap.org/wiki/Import/Software#Negative_IDs
 
-osmconvert $kartendaten_orig $poi_osm1 -o=$kartendaten1
+osmconvert $kartendaten_orig $poi_osm1.pbf -o=$kartendaten1
 osmconvert $kartendaten1 |sed 's/changeset="1"/changeset="0"/g' > $kartendaten2
 osmconvert $kartendaten2 -o=$kartendaten
 
 # osmconvert $kartendaten |grep -A4 -B4 "Grube Dorweiler"
 #https://www.google.de/maps/place/50%C2%B008'29.7%22N+7%C2%B026'26.8%22E/@50.1409961,7.4384441,16.33z/data=!4m5!3m4!1s0x0:0x0!8m2!3d50.141582!4d7.440785
 
+
+#Ausoniusstollen: 
+# https://www.google.de/maps/place/50%C2%B015'44.6%22N+7%C2%B026'23.5%22E/@50.2624004,7.4376793,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d50.262397!4d7.439868
+# https://opentopomap.org/#map=17/50.26120/7.43946
+# osmconvert $kartendaten |grep -A4 -B4 "Ausoniusstollen"
 
 ./mt.pl join $region
 
