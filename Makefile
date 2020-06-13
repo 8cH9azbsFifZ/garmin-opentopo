@@ -10,3 +10,4 @@ run:
 
 clean:
 	rm TileCache/*
+	rm -rf maps/Freizeitkarte_RHEINLAND-PFALZ.gmap
