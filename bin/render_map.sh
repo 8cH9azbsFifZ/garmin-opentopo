@@ -14,9 +14,9 @@ java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/OpenTopoMap.txt
 mv OpenTopoMap.typ TYP
 
 # Fenix 6x typ
+echo Create Fenix 6x typ
 java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/fenix-6x.txt 
 mv fenix-6x.typ TYP
-
 
 
 # Remder the map
