@@ -1,14 +1,7 @@
 #!/bin/bash
-DOWNLOAD=/garmin/var/download
-SEAZIP=$DOWNLOAD/sea.zip
-BOUNDSZIP=$DOWNLOAD/bounds.zip
+echo "bootstrap  =     Complete the Environment with needed downloads (boundaries)"
+#FIXME not used here
 
-test -d $DOWNLOAD ||mkdir -p $DOWNLOAD
-
-test -e $SEAZIP ||wget -O $SEAZIP http://osm.thkukuk.de/data/sea-latest.zip
-test -e ./var/sea/version.txt ||unzip $SEAZIP -d ./var
-
-
-test -e $BOUNDSZIP ||wget -O $BOUNDSZIP http://osm.thkukuk.de/data/bounds-latest.zip
-test -e ./var/bounds/version.txt ||unzip $BOUNDSZIP -d ./var/bounds
+test -e /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea/version.txt ||./mt.pl bootstrap
+test -e /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds/version.txt ||./mt.pl bootstrap
 

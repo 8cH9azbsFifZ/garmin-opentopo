@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "bootstrap  =     Complete the Environment with needed downloads (boundaries)"
-#FIXME not used here
+
 
 echo "create     = 1.  (re)create all directories"
 test -d work/$region/||./mt.pl create $region

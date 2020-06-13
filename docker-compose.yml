@@ -2,36 +2,38 @@ version: '3'
 services:
     prepare:
         image: asdlfkj31h/garmin-opentopo:latest
-        command: /opt/garmin/bin/20_prepare_osm_tiles.sh
+        command: /opt/garmin/bin/10_prepare.sh
         environment: 
             region: "Freizeitkarte_RHEINLAND-PFALZ"
         volumes:
-            - garminmaps:/garmin/
-            - bounds:/garmin/var/bounds/
-            - sea:/garmin/var/sea
-            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
-            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds
+            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea
             - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
 
-    prepare_typ:
-        image: asdlfkj31h/garmin-opentopo:latest
-        command: /opt/garmin/bin/30_prepare_typ.sh
-        volumes:
-            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
+#    merge:
+#        image: asdlfkj31h/garmin-opentopo:latest
+#        command: /opt/garmin/bin/20_prepare_osm_tiles.sh
+#        environment: 
+#            region: "Freizeitkarte_RHEINLAND-PFALZ"
+#        volumes:
+#            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
+#            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+#            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
 
-    render_map:
-        image: asdlfkj31h/garmin-opentopo:latest
-        command: /opt/garmin/bin/render_map.sh
-        environment: 
-            region: "Freizeitkarte_RHEINLAND-PFALZ"
-            lang: "de"
-            typ: "OpenTopoMap-Cave.typ" #"OpenTopoMap.typ"  # fenix-6x.typ            # freizeitkarte.TYP
-            style: "opentopomap"    # fzk (auch bei fenix 6)
-        volumes:
-            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
-            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
-            - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
-            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
+
+#    render_map:
+#        image: asdlfkj31h/garmin-opentopo:latest
+#        command: /opt/garmin/bin/render_map.sh
+#        environment: 
+#            region: "Freizeitkarte_RHEINLAND-PFALZ"
+#            lang: "de"
+#            typ: "OpenTopoMap-Cave.typ" #"OpenTopoMap.typ"  # fenix-6x.typ            # freizeitkarte.TYP
+#            style: "opentopomap"    # fzk (auch bei fenix 6)
+#        volumes:
+#            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
+#            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
+#            - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
+#            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
 
     mt:
         image: asdlfkj31h/garmin-opentopo:latest
