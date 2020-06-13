@@ -7,15 +7,15 @@ find work/typfiles/$lang/freizeit.TYP ||./mt.pl alltypfiles
 
 # OpenTopoMap - Cave
 echo Create Opentopo cave typ
-java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/OpenTopoMap-Cave.txt
-mv OpenTopoMap-Cave.typ TYP
+fn=OpenTopoMap-Cave
+test -e TYP/$fn.typ ||(java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/$fn.txt && mv $fn.typ TYP)
 
 # OpenTopoMap
 echo Create Opentopo typ
-java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/OpenTopoMap.txt 
-mv OpenTopoMap.typ TYP
+fn=OpenTopoMap
+test -e TYP/$fn.typ ||(java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/$fn.txt && mv $fn.typ TYP)
 
 # Fenix 6x typ
 echo Create Fenix 6x typ
-java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/fenix-6x.txt 
-mv fenix-6x.typ TYP
+fn=fenix-6x
+test -e TYP/$fn.typ ||(java -jar ./tools/mkgmap/mkgmap.jar --family-id=$fid ./TYP/$fn.txt && mv $fn.typ TYP)
