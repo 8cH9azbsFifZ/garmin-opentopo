@@ -18,7 +18,8 @@ services:
 #        volumes:
 #            - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
 #            - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
-#            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work    
+#            - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work  
+#            - poi:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/poi:ro
 
 
 #    render_map:

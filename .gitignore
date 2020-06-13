@@ -2,3 +2,4 @@ docker-compose.override.yml
 maps
 .DS_Store
 TileCache
+poi/
