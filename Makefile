@@ -8,3 +8,5 @@ run:
 	docker-compose run mt bash
 #	docker run -it --rm asdlfkj31h/garmin-opentopo:latest bash
 
+clean:
+	rm TileCache/*
