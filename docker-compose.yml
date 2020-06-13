@@ -25,7 +25,7 @@ services:
         environment: 
             region: "Freizeitkarte_RHEINLAND-PFALZ"
             lang: "de"
-            typ: "OpenTopoMap_Cave.typ" #"OpenTopoMap.typ"  # fenix-6x.typ            # freizeitkarte.TYP
+            typ: "OpenTopoMap-Cave.typ" #"OpenTopoMap.typ"  # fenix-6x.typ            # freizeitkarte.TYP
             style: "opentopomap"    # fzk (auch bei fenix 6)
         volumes:
             - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
