@@ -13,6 +13,15 @@
     make build
     docker-compose up
     make run
+    /opt/garmin/bin/24_merge_elevation.sh
+    /opt/garmin/bin/32_render_map.sh
+
+### Running with custom POI files
+TBD: adjust POI source file with environment variables
+
+    /opt/garmin/bin/22_merge_poi.sh 
+    /opt/garmin/bin/32_render_map.sh
+
 
 ## Todo
 - move lib to install
