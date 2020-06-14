@@ -45,11 +45,8 @@ services:
             typ: "OpenTopoMap-Cave.typ" 
             style: "opentopomap" 
         volumes:
-            - garminmaps:/garmin/
-            - bounds:/garmin/bounds/:ro
-            - sea:/garmin/sea/:ro
-            - install:/garmin/map_gps:ro
             - bounds:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/bounds:ro
             - sea:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/sea:ro
             - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
             - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work        
+            - poi:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/poi:ro
