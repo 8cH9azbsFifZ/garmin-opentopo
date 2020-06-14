@@ -2,9 +2,8 @@
 
 poi_gpx=RLP-0.3.1.gpx # source file # FIXME
 kartendaten=work/$region/Kartendaten_$region.osm.pbf #target file
-kartendaten_orig=$kartendaten.orig
-kartendaten1=work/$region/Kartendaten_$region.1.osm.pbf #tmp
 hoehendaten=work/$region/Hoehendaten_$region.osm.pbf #target file
+mergedfile=work/$region/$region.osm.pbf 
 
 #cp $kartendaten $kartendaten_orig # FIXME
 
@@ -27,12 +26,11 @@ osmconvert $poi_osm1.pbf|sed 's/changeset="1"/changeset="0"/g' > $poi_osm2
 osmconvert $poi_osm2 -o=$poi_osm2.pbf
 
 # Merge POI with map data
+kartendaten1=work/$region/Kartendaten_$region.1.osm.pbf #tmp
 sh /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/tools/osmosis/bin/osmosis  --read-pbf $kartendaten --read-pbf $poi_osm2.pbf  --merge --write-pbf $kartendaten1 omitmetadata=true
 
 # Merge map with height data
-sh /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/tools/osmosis/bin/osmosis  --read-pbf $kartendaten1 --read-pbf $hoehendaten  --merge --write-pbf XXXXXXX omitmetadata=true # FIXME
-
-
+sh /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/tools/osmosis/bin/osmosis  --read-pbf $kartendaten1 --read-pbf $hoehendaten  --merge --write-pbf $mergedfile omitmetadata=true # FIXME
 
 # osmconvert $kartendaten |grep -A4 -B4 "Grube Dorweiler"
 #https://www.google.de/maps/place/50%C2%B008'29.7%22N+7%C2%B026'26.8%22E/@50.1409961,7.4384441,16.33z/data=!4m5!3m4!1s0x0:0x0!8m2!3d50.141582!4d7.440785
