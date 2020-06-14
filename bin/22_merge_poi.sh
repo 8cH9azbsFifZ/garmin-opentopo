@@ -22,7 +22,7 @@ cat $poi_osm|awk -v rnd=$offset -F="' " '/node id/{l=$0;gsub("  <node id=","");m
 poi_osm2=work/$region/${poi_gpx/.gpx/.2.osm} # tmp file
 osmconvert $poi_osm1 -o=$poi_osm1.pbf
 
-# manual stull cf. rlp1. bounds, timestamp, generator
+# manual stull cf. rlp1. bounds, timestamp, generator # FIXME : may go...
 osmconvert $poi_osm1.pbf|sed 's/changeset="1"/changeset="0"/g' > $poi_osm2
 osmconvert $poi_osm2 -o=$poi_osm2.pbf
 
