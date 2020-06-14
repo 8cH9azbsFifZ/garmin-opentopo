@@ -8,11 +8,18 @@
 
 ![Example map](doc/example.png)
 
+## Running the tool
+
+    make build
+    docker-compose up
+    make run
 
 ## Todo
 - move lib to install
 - move in garmin dir (container)
-- Better icon for mines
+- Better icon for 
+- Multiple POI files support
+
 
 ## References
 - Baseline for this code: [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap) 

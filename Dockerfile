@@ -24,6 +24,7 @@ ADD lib/ /opt/lib
 RUN mkdir /garmin
 #WORKDIR /garmin
 WORKDIR /opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung
+# FIXME: Better dir name
 
 
 VOLUME ["/garmin", "/garmin/sea", "/garmin/bounds"]
