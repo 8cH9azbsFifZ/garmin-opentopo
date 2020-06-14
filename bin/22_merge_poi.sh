@@ -1,27 +1,22 @@
 #!/bin/bash
 
-poi_gpx=RLP-0.3.1.gpx # source file # FIXME
+poi_osm=poi/RLP.osm
 kartendaten=work/$region/Kartendaten_$region.osm.pbf #target file
 hoehendaten=work/$region/Hoehendaten_$region.osm.pbf #target file
 mergedfile=work/$region/$region.osm.pbf 
 
-#cp $kartendaten $kartendaten_orig # FIXME
-
-# Convert GPX POI to OSM
-echo "Patch: Converting GPX POI to OSM"
-poi_osm=work/$region/${poi_gpx/.gpx/.osm} #tmp file
-gpsbabel -i gpx -f poi/$poi_gpx  -o osm,tagnd="man_made:adit;disused:yes" -F $poi_osm
 
 # Fix negative IDs in OSM
 # cf. https://wiki.openstreetmap.org/wiki/Import/Software#Negative_IDs
 echo "Patch: Fixing negative IDs"
-poi_osm1=work/$region/${poi_gpx/.gpx/.1.osm} # tmp file
+tmp_poi=$(basename $poi_osm)
+poi_osm1=work/$region/${tmp_poi/.osm/.1.osm} # tmp file
 offset=2
 cat $poi_osm|awk -v rnd=$offset -F="' " '/node id/{l=$0;gsub("  <node id=","");m=$0;gsub(" .*","");n=$0;gsub("'\''","");a=++rnd;f="  <node id='\''"a"'\''"m;gsub("'\'\''-","",f);print f}/</{print}' > $poi_osm1
 
 # Convert to PBF format and correct changeset
 echo "Patch: Correcting changeset and convert to PBD"
-poi_osm2=work/$region/${poi_gpx/.gpx/.2.osm} # tmp file
+poi_osm2=work/$region/${tmp_poi/.osm/.2.osm} # tmp file
 osmconvert $poi_osm1 -o=$poi_osm1.pbf
 
 # manual stull cf. rlp1. bounds, timestamp, generator # FIXME : may go...
