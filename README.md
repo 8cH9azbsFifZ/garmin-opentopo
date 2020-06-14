@@ -4,11 +4,27 @@
 
 ## Features
 - Self contained docker image for rendering osm maps for garmin devices.
-- TBD
+- Support for various styles: OpenTopoMap, Freizeitkarte, Fenix 6.
+- Support for custom POI overlays (i.e. caves).
 
 ![Example map](doc/example.png)
 
+# Installation
+
+## Requirements
+- Docker 
+- at least 2 GB memory
+- at least 5 GB hdd storage
+
+## Time
+*Status*: WIP...
+
+germany Total time taken: 1 hour 48 minutes 3 seconds
+
+
 ## Running the tool
+*Status*: WIP...
+
 
     make build
     docker-compose up
@@ -31,30 +47,28 @@ TBD: adjust POI source file with environment variables
 
 
 ## References
-- Baseline for this code: [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap) 
+- OpenTopoMap style: [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap) 
 - Input for style definitions: [MKGMAP Hiking](https://github.com/vibrog/mkgmap-hiking) 
 - [OSMCONVERT](http://m.m.i24.cc/osmconvert.c)
 - [MKGMAP](http://www.mkgmap.org.uk/download/mkgmap.html) and its [SPLITTER](http://www.mkgmap.org.uk/download/splitter.html)
 - [phyghtmap](http://katze.tfiu.de/projects/phyghtmap/)
-- Alternative download [Bike Extract SRTM OSM](https://extract.bbbike.org/)
+- SRTM OSM data [Bike Extract SRTM OSM](https://extract.bbbike.org/)
 - Freizeitkarte development environment [github](https://github.com/freizeitkarte/fzk-mde-garmin)
 - Garmin Fenix 6 style files [github](https://github.com/ahotzler/garmin-fenix-6x-outdoor-typfile-AH)
 
 
 ## Howto adjust style
+*Status*: WIP...
+
 - Which points to show in which zoom level? style/opentopomap/points
 - Icons in XPM style/typ/OpenTopoMap.typ
 
-## Requirements
-- Docker 
-- 2 GB Memory
-- more than 5 GB storage
-
-## Time
-germany Total time taken: 1 hour 48 minutes 3 seconds
-
 # Licenses
-- (c) Map: FZK project (free for private use); Map data: OpenStreetMap contributors; Contour data: U.S. Geological Survey or J. de Ferranti
+- This module: GPL
+Merged contents (cf. the references):
+- (c) Map: FZK project (free for private use)
+- Map data: OpenStreetMap contributors
+- Contour data: U.S. Geological Survey or J. de Ferranti
 
 # Releases
 - Version 0.13 baseline: cleanup poi merge
