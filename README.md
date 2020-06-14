@@ -71,6 +71,7 @@ Merged contents (cf. the references):
 - Contour data: U.S. Geological Survey or J. de Ferranti
 
 # Releases
+- Version 0.14 baseline: compatibility with cavemap-script
 - Version 0.13 baseline: cleanup poi merge
 - Version 0.12 baseline: cave poi rendering works
 - Version 0.11 baseline: fenix 6 typ works
