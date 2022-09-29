@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian
 
 MAINTAINER Gerolf Ziegenhain <gerolf.ziegenhain@gmail.com>
 
