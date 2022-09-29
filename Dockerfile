@@ -4,7 +4,7 @@ MAINTAINER Gerolf Ziegenhain <gerolf.ziegenhain@gmail.com>
 
 RUN apt-get update
 RUN apt-get -y install python3-pip gpsbabel osmctools 
-RUN pip  install cycler pyparsing matplotlib http cookiejar bs4 lxml request
+RUN pip3  install cycler pyparsing matplotlib http cookiejar bs4 lxml request
 
 #RUN wget http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.20.orig.tar.gz
 ADD install /install
