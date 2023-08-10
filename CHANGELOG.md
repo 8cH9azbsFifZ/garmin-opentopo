@@ -1,0 +1,11 @@
+- Version 0.14 baseline: compatibility with cavemap-script
+- Version 0.13 baseline: cleanup poi merge
+- Version 0.12 baseline: cave poi rendering works
+- Version 0.11 baseline: fenix 6 typ works
+- Version 0.10 baseline: opentopomap works
+- Version 0.9 baseline: docker-compose up >> rlp maps created for basecamp and garmin in ./maps
+- Version 0.8 baseline with workflow fzk: rlp
+- Version 0.7 baseline with working bootstrap: bounds & sea
+- Version 0.6 baseline with working fzk dev
+- Version 0.4 starts merge with fzk development entvironment
+- Version up to 0.3 works with Makefile (cf. docu in makefile itself)

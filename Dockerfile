@@ -1,16 +1,13 @@
 FROM debian
 
-MAINTAINER Gerolf Ziegenhain <gerolf.ziegenhain@gmail.com>
+RUN apt-get update && apt-get -y install python3-pip gpsbabel osmctools wget curl rsync vim unzip default-jre nsis zip less python3-cycler python3-gdal python3-pyparsing python3-matplotlib  python3-bs4 python3-lxml python3-numpy
+#
+#RUN pip3 install python3-http python3-cookiejar python3-request
 
-RUN apt-get update
-RUN apt-get -y install python3-pip gpsbabel osmctools 
-RUN pip3  install cycler pyparsing matplotlib http cookiejar bs4 lxml request
 
-#RUN wget http://katze.tfiu.de/projects/phyghtmap/phyghtmap_2.20.orig.tar.gz
 ADD install /install
-RUN cd /tmp ; tar xzf /install/phyghtmap_2.20.orig.tar.gz ; cd phyghtmap-2.20 ; python setup.py install
+RUN dpkg -i /install/phyghtmap_2.23-1_all.deb
 
-RUN apt-get -y install wget curl rsync vim unzip default-jre nsis zip less
 
 # Store garmin scripts
 RUN mkdir -p /opt/garmin

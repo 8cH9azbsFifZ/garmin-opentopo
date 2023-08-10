@@ -50,3 +50,10 @@ services:
             - install:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/install
             - work:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/work        
             - poi:/opt/lib/fzk-mde-garmin-develop/Freizeitkarte-Entwicklung/poi:ro
+
+volumes:
+    bounds:
+    sea:
+    install:
+    work:
+    poi:
