@@ -8,6 +8,6 @@ run:
 #	docker run -it --rm asdlfkj31h/garmin-opentopo:latest bash
 
 clean:
-	docker-compose down -v
+	docker-compose down -v --remove-orphans
 	rm TileCache/*
 	rm -rf maps/Freizeitkarte_RHEINLAND-PFALZ.gmap
